@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "ความเร็วไม่จำกัด เซิร์ฟเวอร์ทั้งหมด ไม่มีโฆษณา",
+    "monthly": "รายเดือน",
+    "sixMonth": "6 เดือน",
+    "yearly": "รายปี",
+    "bestValue": "คุ้มที่สุด",
+    "save": "ประหยัด",
+    "subscribe": "สมัครสมาชิก",
+    "perMonth": "/เดือน",
+    "features": "สิ่งที่คุณจะได้รับ",
+    "feat1": "เซิร์ฟเวอร์ทั้งหมด",
+    "feat2": "แบนด์วิดท์ไม่จำกัด",
+    "feat3": "ไม่มีโฆษณา",
+    "feat4": "การสนับสนุนแบบพิเศษ",
+    "feat5": "สูงสุด 5 อุปกรณ์",
+    "processing": "กำลังดำเนินการ...",
+    "error": "เกิดข้อผิดพลาด"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "ชำระเงินสำเร็จ!",
+    "description": "การสมัครสมาชิกของคุณเปิดใช้งานแล้ว",
+    "close": "ปิด"
+  }
+}

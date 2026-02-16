@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Tốc độ không giới hạn, tất cả máy chủ, không quảng cáo",
+    "monthly": "Hàng tháng",
+    "sixMonth": "6 Tháng",
+    "yearly": "Hàng năm",
+    "bestValue": "Ưu đãi tốt nhất",
+    "save": "Tiết kiệm",
+    "subscribe": "Đăng ký",
+    "perMonth": "/tháng",
+    "features": "Bạn nhận được",
+    "feat1": "Tất cả máy chủ",
+    "feat2": "Băng thông không giới hạn",
+    "feat3": "Không quảng cáo",
+    "feat4": "Hỗ trợ ưu tiên",
+    "feat5": "Tối đa 5 thiết bị",
+    "processing": "Đang xử lý...",
+    "error": "Đã xảy ra lỗi"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Thanh toán thành công!",
+    "description": "Gói đăng ký đã được kích hoạt.",
+    "close": "Đóng"
+  }
+}

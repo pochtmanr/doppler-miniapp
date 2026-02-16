@@ -1,30 +1,78 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { getTranslation, detectLanguage } from '@/lib/i18n';
+import { detectLanguage, getMessages } from '@/lib/i18n';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 const PLANS = [
-  { id: 'monthly', price: '$9.99', pricePerMonth: '$9.99', cents: 999, save: null },
-  { id: '6month', price: '$49.99', pricePerMonth: '$8.33', cents: 4999, save: '17%' },
-  { id: 'yearly', price: '$79.99', pricePerMonth: '$6.67', cents: 7999, save: '33%', best: true },
+  { id: 'monthly', price: '$4', pricePerMonth: '$4', cents: 400, save: null, best: false },
+  { id: '6month', price: '$20', pricePerMonth: '$3.33', cents: 2000, save: '17%', best: false },
+  { id: 'yearly', price: '$35', pricePerMonth: '$2.92', cents: 3500, save: '27%', best: true },
 ];
 
 export default function Home() {
-  const [lang, setLang] = useState('en');
-  const [t, setT] = useState(getTranslation('en'));
+  const [messages, setMessages] = useState(getMessages('en'));
   const [selected, setSelected] = useState('yearly');
   const [loading, setLoading] = useState(false);
+  const [promoCode, setPromoCode] = useState('');
+  const [promoApplied, setPromoApplied] = useState<{ code: string; discount_percent: number; promo_id: string } | null>(null);
+  const [promoError, setPromoError] = useState('');
+  const [promoLoading, setPromoLoading] = useState(false);
 
   useEffect(() => {
-    const detected = detectLanguage();
-    setLang(detected);
-    setT(getTranslation(detected));
+    const lang = detectLanguage();
+    setMessages(getMessages(lang));
 
     if (window.Telegram?.WebApp) {
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
     }
   }, []);
+
+  const m = messages.miniapp;
+
+  const applyPromo = async () => {
+    if (!promoCode.trim()) return;
+    setPromoLoading(true);
+    setPromoError('');
+    try {
+      const initData = window.Telegram?.WebApp?.initData || '';
+      const params = new URLSearchParams(initData);
+      const userStr = params.get('user');
+      const accountId = userStr ? JSON.parse(userStr).id : 'unknown';
+
+      const planMap: Record<string, string> = { monthly: 'monthly', '6month': 'semiannual', yearly: 'annual' };
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE || ''}/api/promo/validate`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code: promoCode, account_id: String(accountId), plan: planMap[selected] || 'monthly' }),
+      });
+      const data = await res.json();
+      if (data.valid) {
+        setPromoApplied({ code: data.code, discount_percent: data.discount_percent, promo_id: data.promo_id });
+        setPromoError('');
+      } else {
+        setPromoError(data.error || 'Invalid code');
+        setPromoApplied(null);
+      }
+    } catch {
+      setPromoError('Failed to validate');
+    } finally {
+      setPromoLoading(false);
+    }
+  };
+
+  const getDiscountedCents = (cents: number) => {
+    if (!promoApplied) return cents;
+    return Math.round(cents * (1 - promoApplied.discount_percent / 100));
+  };
+
+  const formatPrice = (cents: number) => {
+    const dollars = cents / 100;
+    return dollars % 1 === 0 ? `$${dollars}` : `$${dollars.toFixed(2)}`;
+  };
 
   const handleSubscribe = async (planId: string) => {
     setLoading(true);
@@ -33,39 +81,41 @@ export default function Home() {
       const res = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planId, initData }),
+        body: JSON.stringify({ planId, initData, promoId: promoApplied?.promo_id || null }),
       });
 
       const data = await res.json();
       if (data.url) {
         window.location.href = data.url;
       } else {
-        alert(data.error || t.error);
+        alert(data.error || m.error);
       }
     } catch {
-      alert(t.error);
+      alert(m.error);
     } finally {
       setLoading(false);
     }
   };
 
   const labelKey = (id: string) => {
-    if (id === 'monthly') return t.monthly;
-    if (id === '6month') return t.sixMonth;
-    return t.yearly;
+    if (id === 'monthly') return m.monthly;
+    if (id === '6month') return m.sixMonth;
+    return m.yearly;
   };
 
   return (
     <main className="min-h-screen px-4 py-6 max-w-lg mx-auto">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="w-16 h-16 mx-auto mb-4 rounded-2xl gradient-bg flex items-center justify-center">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-        </div>
-        <h1 className="text-2xl font-bold mb-2">{t.title}</h1>
-        <p className="text-gray-400 text-sm">{t.subtitle}</p>
+        <img
+          src="/icon-512.png"
+          alt="Doppler VPN"
+          width={64}
+          height={64}
+          className="mx-auto mb-4 rounded-[22%]"
+        />
+        <h1 className="font-display text-2xl font-semibold mb-2">{m.title}</h1>
+        <p className="text-text-muted text-sm">{m.subtitle}</p>
       </div>
 
       {/* Plans */}
@@ -74,55 +124,116 @@ export default function Home() {
           <button
             key={plan.id}
             onClick={() => setSelected(plan.id)}
-            className={`w-full rounded-2xl p-4 text-left transition-all relative ${
-              plan.best ? 'best-value' : 'card-gradient'
-            } ${selected === plan.id ? 'ring-2 ring-purple-500' : ''}`}
+            className="w-full text-left"
           >
-            {plan.best && (
-              <span className="absolute -top-2.5 left-4 px-2 py-0.5 text-xs font-semibold bg-purple-600 rounded-full">
-                {t.bestValue}
-              </span>
-            )}
-            <div className="flex items-center justify-between">
-              <div>
-                <div className="font-semibold text-lg">{labelKey(plan.id)}</div>
-                <div className="text-gray-400 text-sm">
-                  {plan.pricePerMonth}{t.perMonth}
-                  {plan.save && (
-                    <span className="ml-2 text-green-400 font-medium">
-                      {t.save} {plan.save}
-                    </span>
+            <Card
+              hover
+              padding="md"
+              className={`transition-all ${
+                selected === plan.id
+                  ? 'ring-2 ring-accent-gold border-accent-gold/30'
+                  : ''
+              } ${plan.best ? 'border-accent-gold/20' : ''}`}
+            >
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-semibold text-lg text-text-primary">{labelKey(plan.id)}</span>
+                    {plan.best && (
+                      <Badge variant="gold" className="text-xs">
+                        {m.bestValue}
+                      </Badge>
+                    )}
+                  </div>
+                  <div className="text-text-muted text-sm">
+                    {plan.pricePerMonth}{m.perMonth}
+                    {plan.save && (
+                      <span className="ml-2 text-accent-teal-light font-medium">
+                        {m.save} {plan.save}
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="text-right">
+                  {promoApplied ? (
+                    <div>
+                      <div className="text-xs text-text-muted line-through">{plan.price}</div>
+                      <div className="text-xl font-bold text-accent-teal-light">{formatPrice(getDiscountedCents(plan.cents))}</div>
+                    </div>
+                  ) : (
+                    <div className="text-xl font-bold text-text-primary">{plan.price}</div>
                   )}
                 </div>
               </div>
-              <div className="text-right">
-                <div className="text-xl font-bold">{plan.price}</div>
-              </div>
-            </div>
+            </Card>
           </button>
         ))}
       </div>
 
+      {/* Promo Code */}
+      <div className="mb-6">
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
+            placeholder={'Promo code'}
+            className="flex-1 bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-text-primary placeholder:text-text-muted/50 focus:outline-none focus:ring-1 focus:ring-accent-teal"
+          />
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={applyPromo}
+            disabled={promoLoading || !promoCode.trim()}
+          >
+            {promoLoading ? '...' : 'Apply'}
+          </Button>
+        </div>
+        {promoError && <p className="text-red-400 text-xs mt-1">{promoError}</p>}
+        {promoApplied && (
+          <div className="flex items-center gap-2 mt-1">
+            <p className="text-accent-teal-light text-xs">✓ {promoApplied.code} — {promoApplied.discount_percent}% off</p>
+            <button onClick={() => { setPromoApplied(null); setPromoCode(''); }} className="text-text-muted text-xs hover:text-red-400">✕</button>
+          </div>
+        )}
+      </div>
+
       {/* Subscribe Button */}
-      <button
+      <Button
+        variant="primary"
+        size="lg"
         onClick={() => handleSubscribe(selected)}
         disabled={loading}
-        className="w-full py-4 rounded-2xl font-semibold text-lg gradient-bg hover:opacity-90 transition-opacity disabled:opacity-50"
+        className="w-full"
       >
-        {loading ? t.processing : t.subscribe}
-      </button>
+        {loading ? m.processing : m.subscribe}
+      </Button>
 
       {/* Features */}
       <div className="mt-8 px-2">
-        <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">{t.features}</h3>
+        <h3 className="text-sm font-semibold text-text-muted uppercase tracking-wider mb-4">{m.features}</h3>
         <div className="space-y-3">
-          {[t.feat1, t.feat2, t.feat3, t.feat4, t.feat5].map((feat, i) => (
+          {[m.feat1, m.feat2, m.feat3, m.feat4, m.feat5].map((feat, i) => (
             <div key={i} className="flex items-center gap-3 text-sm">
-              <span className="text-purple-400">✓</span>
-              <span>{feat}</span>
+              <span className="text-accent-teal-light">&#10003;</span>
+              <span className="text-text-muted">{feat}</span>
             </div>
           ))}
         </div>
+      </div>
+
+      {/* View Subscription Status Link */}
+      <div className="mt-8 text-center">
+        <Button variant="ghost" size="sm" href="/status">
+          {messages.status.title} &rarr;
+        </Button>
+      </div>
+
+      {/* Legal Links */}
+      <div className="mt-6 mb-4 flex justify-center gap-4 text-xs text-text-muted">
+        <a href="/privacy" className="hover:text-text-primary transition-colors">Privacy Policy</a>
+        <span>&middot;</span>
+        <a href="/terms" className="hover:text-text-primary transition-colors">Terms of Service</a>
       </div>
     </main>
   );

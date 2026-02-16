@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "سرعت نامحدود، همه سرورها، بدون تبلیغات",
+    "monthly": "ماهانه",
+    "sixMonth": "6 ماه",
+    "yearly": "سالانه",
+    "bestValue": "بهترین پیشنهاد",
+    "save": "صرفه‌جویی",
+    "subscribe": "اشتراک",
+    "perMonth": "/ماه",
+    "features": "امکانات",
+    "feat1": "همه سرورها",
+    "feat2": "پهنای باند نامحدود",
+    "feat3": "بدون تبلیغات",
+    "feat4": "پشتیبانی ویژه",
+    "feat5": "تا 5 دستگاه",
+    "processing": "...در حال پردازش",
+    "error": "خطایی رخ داد"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "!پرداخت موفق",
+    "description": ".اشتراک شما فعال شد",
+    "close": "بستن"
+  }
+}

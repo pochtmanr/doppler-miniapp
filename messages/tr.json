@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Sınırsız hız, tüm sunucular, reklam yok",
+    "monthly": "Aylık",
+    "sixMonth": "6 Ay",
+    "yearly": "Yıllık",
+    "bestValue": "En iyi teklif",
+    "save": "Tasarruf",
+    "subscribe": "Abone ol",
+    "perMonth": "/ay",
+    "features": "Neler alırsınız",
+    "feat1": "Tüm sunucular",
+    "feat2": "Sınırsız bant genişliği",
+    "feat3": "Reklam yok",
+    "feat4": "Öncelikli destek",
+    "feat5": "5 cihaza kadar",
+    "processing": "İşleniyor...",
+    "error": "Bir şeyler yanlış gitti"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Ödeme başarılı!",
+    "description": "Aboneliğiniz aktif.",
+    "close": "Kapat"
+  }
+}

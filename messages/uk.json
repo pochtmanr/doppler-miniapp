@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Безлімітна швидкість, всі сервери, без реклами",
+    "monthly": "Місяць",
+    "sixMonth": "6 місяців",
+    "yearly": "Рік",
+    "bestValue": "Найкраща пропозиція",
+    "save": "Економія",
+    "subscribe": "Підписатися",
+    "perMonth": "/міс",
+    "features": "Що ви отримаєте",
+    "feat1": "Всі сервери",
+    "feat2": "Безлімітний трафік",
+    "feat3": "Без реклами",
+    "feat4": "Пріоритетна підтримка",
+    "feat5": "До 5 пристроїв",
+    "processing": "Обробка...",
+    "error": "Щось пішло не так"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Оплата успішна!",
+    "description": "Вашу підписку активовано.",
+    "close": "Закрити"
+  }
+}

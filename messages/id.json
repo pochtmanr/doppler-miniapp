@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Kecepatan tak terbatas, semua server, tanpa iklan",
+    "monthly": "Bulanan",
+    "sixMonth": "6 Bulan",
+    "yearly": "Tahunan",
+    "bestValue": "Penawaran terbaik",
+    "save": "Hemat",
+    "subscribe": "Berlangganan",
+    "perMonth": "/bln",
+    "features": "Yang Anda dapatkan",
+    "feat1": "Semua server",
+    "feat2": "Bandwidth tak terbatas",
+    "feat3": "Tanpa iklan",
+    "feat4": "Dukungan prioritas",
+    "feat5": "Hingga 5 perangkat",
+    "processing": "Memproses...",
+    "error": "Terjadi kesalahan"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Pembayaran berhasil!",
+    "description": "Langganan Anda aktif.",
+    "close": "Tutup"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Onbeperkte snelheid, alle servers, geen advertenties",
+    "monthly": "Maandelijks",
+    "sixMonth": "6 Maanden",
+    "yearly": "Jaarlijks",
+    "bestValue": "Beste aanbieding",
+    "save": "Bespaar",
+    "subscribe": "Abonneren",
+    "perMonth": "/mnd",
+    "features": "Wat je krijgt",
+    "feat1": "Alle servers",
+    "feat2": "Onbeperkte bandbreedte",
+    "feat3": "Geen advertenties",
+    "feat4": "Prioriteit ondersteuning",
+    "feat5": "Tot 5 apparaten",
+    "processing": "Verwerken...",
+    "error": "Er ging iets mis"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Betaling geslaagd!",
+    "description": "Je abonnement is actief.",
+    "close": "Sluiten"
+  }
+}

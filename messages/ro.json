@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Viteză nelimitată, toate serverele, fără reclame",
+    "monthly": "Lunar",
+    "sixMonth": "6 Luni",
+    "yearly": "Anual",
+    "bestValue": "Cea mai bună ofertă",
+    "save": "Economisește",
+    "subscribe": "Abonează-te",
+    "perMonth": "/lună",
+    "features": "Ce primești",
+    "feat1": "Toate serverele",
+    "feat2": "Lățime de bandă nelimitată",
+    "feat3": "Fără reclame",
+    "feat4": "Suport prioritar",
+    "feat5": "Până la 5 dispozitive",
+    "processing": "Se procesează...",
+    "error": "Ceva a mers prost"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Plată reușită!",
+    "description": "Abonamentul tău este activ.",
+    "close": "Închide"
+  }
+}

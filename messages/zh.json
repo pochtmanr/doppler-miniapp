@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "无限速度，所有服务器，无广告",
+    "monthly": "月付",
+    "sixMonth": "6个月",
+    "yearly": "年付",
+    "bestValue": "最佳优惠",
+    "save": "节省",
+    "subscribe": "订阅",
+    "perMonth": "/月",
+    "features": "您将获得",
+    "feat1": "所有服务器",
+    "feat2": "无限带宽",
+    "feat3": "无广告",
+    "feat4": "优先支持",
+    "feat5": "最多5台设备",
+    "processing": "处理中...",
+    "error": "出了点问题"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "支付成功！",
+    "description": "您的Doppler VPN Pro订阅已激活。",
+    "close": "关闭"
+  }
+}

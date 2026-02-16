@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "무제한 속도, 모든 서버, 광고 없음",
+    "monthly": "월간",
+    "sixMonth": "6개월",
+    "yearly": "연간",
+    "bestValue": "최고 혜택",
+    "save": "절약",
+    "subscribe": "구독",
+    "perMonth": "/월",
+    "features": "혜택",
+    "feat1": "모든 서버",
+    "feat2": "무제한 대역폭",
+    "feat3": "광고 없음",
+    "feat4": "우선 지원",
+    "feat5": "최대 5대",
+    "processing": "처리 중...",
+    "error": "문제가 발생했습니다"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "결제 성공!",
+    "description": "구독이 활성화되었습니다.",
+    "close": "닫기"
+  }
+}

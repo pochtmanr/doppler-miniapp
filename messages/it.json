@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Velocità illimitata, tutti i server, senza pubblicità",
+    "monthly": "Mensile",
+    "sixMonth": "6 Mesi",
+    "yearly": "Annuale",
+    "bestValue": "Migliore offerta",
+    "save": "Risparmia",
+    "subscribe": "Abbonati",
+    "perMonth": "/mese",
+    "features": "Cosa ottieni",
+    "feat1": "Tutti i server",
+    "feat2": "Banda illimitata",
+    "feat3": "Senza pubblicità",
+    "feat4": "Supporto prioritario",
+    "feat5": "Fino a 5 dispositivi",
+    "processing": "Elaborazione...",
+    "error": "Qualcosa è andato storto"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Pagamento riuscito!",
+    "description": "Il tuo abbonamento è attivo.",
+    "close": "Chiudi"
+  }
+}

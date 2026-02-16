@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "無制限速度、全サーバー、広告なし",
+    "monthly": "月額",
+    "sixMonth": "6ヶ月",
+    "yearly": "年額",
+    "bestValue": "お得",
+    "save": "節約",
+    "subscribe": "登録",
+    "perMonth": "/月",
+    "features": "特典",
+    "feat1": "全サーバー",
+    "feat2": "無制限帯域",
+    "feat3": "広告なし",
+    "feat4": "優先サポート",
+    "feat5": "最大5台",
+    "processing": "処理中...",
+    "error": "エラーが発生しました"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "支払い完了！",
+    "description": "サブスクリプションが有効になりました。",
+    "close": "閉じる"
+  }
+}

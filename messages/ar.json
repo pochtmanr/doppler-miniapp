@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "سرعة غير محدودة، جميع الخوادم، بدون إعلانات",
+    "monthly": "شهري",
+    "sixMonth": "6 أشهر",
+    "yearly": "سنوي",
+    "bestValue": "أفضل عرض",
+    "save": "وفر",
+    "subscribe": "اشترك",
+    "perMonth": "/شهر",
+    "features": "ماذا تحصل",
+    "feat1": "جميع المواقع",
+    "feat2": "نطاق ترددي غير محدود",
+    "feat3": "بدون إعلانات",
+    "feat4": "دعم أولوي",
+    "feat5": "حتى 5 أجهزة",
+    "processing": "...جارٍ المعالجة",
+    "error": "حدث خطأ ما"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "!تم الدفع بنجاح",
+    "description": ".اشتراكك نشط الآن",
+    "close": "إغلاق"
+  }
+}

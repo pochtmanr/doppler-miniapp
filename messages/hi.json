@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "अनलिमिटेड स्पीड, सभी सर्वर, कोई विज्ञापन नहीं",
+    "monthly": "मासिक",
+    "sixMonth": "6 महीने",
+    "yearly": "वार्षिक",
+    "bestValue": "सर्वोत्तम",
+    "save": "बचत",
+    "subscribe": "सदस्यता लें",
+    "perMonth": "/माह",
+    "features": "आपको क्या मिलेगा",
+    "feat1": "सभी सर्वर",
+    "feat2": "अनलिमिटेड बैंडविड्थ",
+    "feat3": "कोई विज्ञापन नहीं",
+    "feat4": "प्राथमिकता सहायता",
+    "feat5": "5 डिवाइस तक",
+    "processing": "प्रोसेसिंग...",
+    "error": "कुछ गलत हो गया"
+  },
+  "status": {
+    "title": "Your Subscription",
+    "tier": "Plan",
+    "expiresAt": "Expires",
+    "daysRemaining": "{days} days remaining",
+    "noSubscription": "No active subscription",
+    "subscribe": "Get Pro",
+    "active": "Active",
+    "expired": "Expired",
+    "free": "Free",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "भुगतान सफल!",
+    "description": "आपकी सदस्यता सक्रिय है।",
+    "close": "बंद करें"
+  }
+}

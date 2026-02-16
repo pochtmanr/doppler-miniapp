@@ -1,38 +1,53 @@
 @import "tailwindcss";
 
-:root {
-  --bg-primary: #0a0a1a;
-  --bg-secondary: #111128;
-  --bg-card: #1a1a3e;
-  --accent-purple: #7c3aed;
-  --accent-blue: #3b82f6;
-  --text-primary: #f0f0ff;
-  --text-secondary: #9ca3af;
+@theme {
+  /* Colors — matches dopplerLanding */
+  --color-bg-primary: #0a0a0a;
+  --color-bg-secondary: #141414;
+  --color-bg-card: oklch(0.1 0 0 / 0.8);
+  --color-text-primary: #f5f5f5;
+  --color-text-muted: #c5c5c5;
+  --color-accent-gold: #E1DECF;
+  --color-accent-teal: #5390A8;
+  --color-accent-teal-light: #73B0C8;
+
+  /* Typography — font variables set by next/font in layout.tsx */
+  --font-family-body: var(--font-body), "Space Grotesk", system-ui, sans-serif;
+  --font-family-display: var(--font-serif), "Instrument Serif", Georgia, serif;
+  --font-family-raster: var(--font-raster), "FK Raster Roman Compact", monospace;
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font-body);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
-.gradient-bg {
-  background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 50%, #06b6d4 100%);
+/* Focus visible for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent-teal);
+  outline-offset: 2px;
 }
 
-.card-gradient {
-  background: linear-gradient(180deg, rgba(124, 58, 237, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
-  border: 1px solid rgba(124, 58, 237, 0.2);
-}
-
-.card-gradient:hover {
-  border-color: rgba(124, 58, 237, 0.5);
-}
-
-.best-value {
-  border-color: #7c3aed;
-  background: linear-gradient(180deg, rgba(124, 58, 237, 0.2) 0%, rgba(59, 130, 246, 0.1) 100%);
+/* Selection color */
+::selection {
+  background-color: var(--color-accent-teal);
+  color: var(--color-text-primary);
 }

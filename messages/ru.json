@@ -1,0 +1,38 @@
+{
+  "miniapp": {
+    "title": "Doppler VPN Pro",
+    "subtitle": "Безлимитная скорость, все серверы, без рекламы",
+    "monthly": "Месяц",
+    "sixMonth": "6 месяцев",
+    "yearly": "Год",
+    "bestValue": "Лучшее предложение",
+    "save": "Экономия",
+    "subscribe": "Подписаться",
+    "perMonth": "/мес",
+    "features": "Что вы получите",
+    "feat1": "Все серверы",
+    "feat2": "Безлимитный трафик",
+    "feat3": "Без рекламы",
+    "feat4": "Приоритетная поддержка",
+    "feat5": "До 5 устройств",
+    "processing": "Обработка...",
+    "error": "Произошла ошибка"
+  },
+  "status": {
+    "title": "Ваша подписка",
+    "tier": "План",
+    "expiresAt": "Истекает",
+    "daysRemaining": "Осталось {days} дней",
+    "noSubscription": "Нет активной подписки",
+    "subscribe": "Получить Pro",
+    "active": "Активна",
+    "expired": "Истекла",
+    "free": "Бесплатный",
+    "pro": "Pro"
+  },
+  "success": {
+    "title": "Оплата прошла успешно!",
+    "description": "Ваша подписка Doppler VPN Pro активирована.",
+    "close": "Закрыть"
+  }
+}

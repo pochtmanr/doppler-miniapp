@@ -1,17 +1,21 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { getTranslation, detectLanguage } from '@/lib/i18n';
+import { detectLanguage, getMessages } from '@/lib/i18n';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 
 export default function SuccessPage() {
-  const [t, setT] = useState(getTranslation('en'));
+  const [messages, setMessages] = useState(getMessages('en'));
 
   useEffect(() => {
-    setT(getTranslation(detectLanguage()));
+    setMessages(getMessages(detectLanguage()));
     if (window.Telegram?.WebApp) {
       window.Telegram.WebApp.ready();
     }
   }, []);
+
+  const s = messages.success;
 
   const handleClose = () => {
     if (window.Telegram?.WebApp) {
@@ -21,21 +25,23 @@ export default function SuccessPage() {
 
   return (
     <main className="min-h-screen flex items-center justify-center px-4">
-      <div className="text-center max-w-sm">
-        <div className="w-20 h-20 mx-auto mb-6 rounded-full gradient-bg flex items-center justify-center">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+      <Card padding="lg" className="text-center max-w-sm w-full">
+        <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-accent-teal/20 flex items-center justify-center">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-accent-teal-light">
             <polyline points="20 6 9 17 4 12"/>
           </svg>
         </div>
-        <h1 className="text-2xl font-bold mb-3">{t.success_title}</h1>
-        <p className="text-gray-400 mb-8">{t.success_desc}</p>
-        <button
+        <h1 className="font-display text-2xl font-semibold mb-3">{s.title}</h1>
+        <p className="text-text-muted mb-8">{s.description}</p>
+        <Button
+          variant="primary"
+          size="lg"
           onClick={handleClose}
-          className="w-full py-4 rounded-2xl font-semibold gradient-bg hover:opacity-90 transition-opacity"
+          className="w-full"
         >
-          {t.success_close}
-        </button>
-      </div>
+          {s.close}
+        </Button>
+      </Card>
     </main>
   );
 }
