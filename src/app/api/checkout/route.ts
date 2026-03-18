@@ -41,34 +41,18 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Server config error' }, { status: 500 });
     }
 
-    // Validate Telegram WebApp initData
-    let userId: number | null = null;
-
-    if (initData) {
-      const user = validateInitData(initData, botToken);
-      if (user) {
-        userId = user.id;
-      } else {
-        // Log for debugging
-        console.error('initData validation failed. initData length:', initData.length);
-        console.error('initData preview:', initData.substring(0, 100));
-        
-        // Try to extract user_id even if hash validation fails (development fallback)
-        try {
-          const params = new URLSearchParams(initData);
-          const userStr = params.get('user');
-          if (userStr) {
-            const parsed = JSON.parse(userStr);
-            userId = parsed.id;
-            console.log('Using user from initData without hash validation:', userId);
-          }
-        } catch {}
-      }
+    // Validate Telegram WebApp initData — no fallback, reject on failure
+    if (!initData) {
+      return NextResponse.json({ error: 'Missing auth — please open from Telegram bot' }, { status: 401 });
     }
 
-    if (!userId) {
+    const user = validateInitData(initData, botToken);
+    if (!user) {
+      console.error('initData validation failed. initData length:', initData.length);
       return NextResponse.json({ error: 'Invalid auth — please open from Telegram bot' }, { status: 401 });
     }
+
+    const userId = user.id;
 
     const baseUrl = req.nextUrl.origin;
 
