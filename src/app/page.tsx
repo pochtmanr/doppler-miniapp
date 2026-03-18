@@ -5,12 +5,24 @@ import { detectLanguage, getMessages } from '@/lib/i18n';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { DISPLAY_PLANS } from '@/lib/plans';
 
-const PLANS = [
-  { id: 'monthly', price: '$4', pricePerMonth: '$4', cents: 400, save: null, best: false },
-  { id: '6month', price: '$20', pricePerMonth: '$3.33', cents: 2000, save: '17%', best: false },
-  { id: 'yearly', price: '$35', pricePerMonth: '$2.92', cents: 3500, save: '27%', best: true },
-];
+const PLANS = DISPLAY_PLANS.map((p) => {
+  const dollars = p.cents / 100;
+  const priceStr = dollars % 1 === 0 ? `$${dollars}` : `$${dollars.toFixed(2)}`;
+  const perMonth = p.cents / (p.days / 30) / 100;
+  const perMonthStr = perMonth % 1 === 0 ? `$${perMonth}` : `$${perMonth.toFixed(2)}`;
+  const monthlyCents = DISPLAY_PLANS.find((pl) => pl.id === 'monthly')?.cents || p.cents;
+  const savePercent = monthlyCents > 0 ? Math.round((1 - p.cents / (p.days / 30) / monthlyCents) * 100) : 0;
+  return {
+    id: p.id,
+    price: priceStr,
+    pricePerMonth: perMonthStr,
+    cents: p.cents,
+    save: savePercent > 0 ? `${savePercent}%` : null,
+    best: p.id === 'yearly',
+  };
+});
 
 export default function Home() {
   const [messages, setMessages] = useState(getMessages('en'));
@@ -20,6 +32,7 @@ export default function Home() {
   const [promoApplied, setPromoApplied] = useState<{ code: string; discount_percent: number; promo_id: string } | null>(null);
   const [promoError, setPromoError] = useState('');
   const [promoLoading, setPromoLoading] = useState(false);
+  const [accountId, setAccountId] = useState<string | null>(null);
 
   useEffect(() => {
     const lang = detectLanguage();
@@ -29,6 +42,26 @@ export default function Home() {
       window.Telegram.WebApp.ready();
       window.Telegram.WebApp.expand();
     }
+
+    // Fetch the real VPN-format account ID for promo validation
+    const fetchAccountId = async () => {
+      try {
+        const initData = window.Telegram?.WebApp?.initData || '';
+        if (!initData) return;
+        const res = await fetch('/api/status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ initData }),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          if (data.accountId) setAccountId(data.accountId);
+        }
+      } catch {
+        // Non-critical — promo validation will still work with fallback
+      }
+    };
+    fetchAccountId();
   }, []);
 
   const m = messages.miniapp;
@@ -38,16 +71,13 @@ export default function Home() {
     setPromoLoading(true);
     setPromoError('');
     try {
-      const initData = window.Telegram?.WebApp?.initData || '';
-      const params = new URLSearchParams(initData);
-      const userStr = params.get('user');
-      const accountId = userStr ? JSON.parse(userStr).id : 'unknown';
+      const resolvedAccountId = accountId || 'unknown';
 
       const planMap: Record<string, string> = { monthly: 'monthly', '6month': 'semiannual', yearly: 'annual' };
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE || ''}/api/promo/validate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ code: promoCode, account_id: String(accountId), plan: planMap[selected] || 'monthly' }),
+        body: JSON.stringify({ code: promoCode, account_id: resolvedAccountId, plan: planMap[selected] || 'monthly' }),
       });
       const data = await res.json();
       if (data.valid) {

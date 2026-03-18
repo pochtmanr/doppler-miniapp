@@ -4,6 +4,8 @@ node_modules
 .env.local
 .vercel
 .env*.local
+tsconfig.tsbuildinfo
+next-env.d.ts
 
 # claude code local settings and session notes (may contain credentials)
 .claude/settings.local.json

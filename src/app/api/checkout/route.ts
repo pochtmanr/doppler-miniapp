@@ -1,22 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { validateInitData } from '@/lib/telegram';
+import { getPlans, type PlanId } from '@/lib/plans';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
 
-const PLANS: Record<string, { name: string; cents: number; days: number }> = {
-  monthly: { name: 'Doppler VPN Pro — Monthly', cents: 400, days: 30 },
-  '6month': { name: 'Doppler VPN Pro — 6 Months', cents: 2000, days: 180 },
-  yearly: { name: 'Doppler VPN Pro — Yearly', cents: 3500, days: 365 },
+const PLAN_NAMES: Record<PlanId, string> = {
+  monthly: 'Doppler VPN Pro — Monthly',
+  '6month': 'Doppler VPN Pro — 6 Months',
+  yearly: 'Doppler VPN Pro — Yearly',
 };
 
 export async function POST(req: NextRequest) {
   try {
     const { planId, initData, promoId } = await req.json();
-    const plan = PLANS[planId];
+    const plans = getPlans();
+    const plan = plans[planId as PlanId];
     if (!plan) {
       return NextResponse.json({ error: 'Invalid plan' }, { status: 400 });
     }
+    const planName = PLAN_NAMES[planId as PlanId];
 
     // Apply promo discount if provided
     let finalCents = plan.cents;
@@ -61,7 +64,7 @@ export async function POST(req: NextRequest) {
       line_items: [{
         price_data: {
           currency: 'usd',
-          product_data: { name: plan.name },
+          product_data: { name: planName },
           unit_amount: finalCents,
         },
         quantity: 1,

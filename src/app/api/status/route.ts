@@ -27,6 +27,7 @@ export async function POST(req: NextRequest) {
         tier: 'free',
         expiresAt: null,
         isActive: false,
+        accountId: null,
       });
     }
 
@@ -44,6 +45,7 @@ export async function POST(req: NextRequest) {
         tier: isActive ? (account?.subscription_tier || 'free') : 'free',
         expiresAt: expiresAt || null,
         isActive,
+        accountId: tgUser.account_id,
       },
       {
         headers: {
