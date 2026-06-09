@@ -1,15 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-  /* Colors — matches dopplerLanding */
-  --color-bg-primary: #0a0a0a;
-  --color-bg-secondary: #141414;
-  --color-bg-card: oklch(0.1 0 0 / 0.8);
-  --color-text-primary: #f5f5f5;
-  --color-text-muted: #c5c5c5;
-  --color-accent-gold: #E1DECF;
-  --color-accent-teal: #5390A8;
+  /* ─── Colors — matches landing v2 (miniapp keeps its own teal hue) ─ */
+  --color-bg-primary:        #141414;
+  --color-bg-secondary:      #1C1C1C;
+  --color-bg-elevated:       #242424;
+  --color-bg-pressed:        #2E2E2E;
+  --color-bg-card:           oklch(0.18 0 0 / 0.75);
+
+  --color-text-primary:      #F5F5F5;
+  --color-text-muted:        #C5C5C5;
+  --color-text-tertiary:     #8A8A8A;
+
+  --color-accent-gold:       #E1DECF;
+  --color-accent-teal:       #5390A8;   /* miniapp-specific cooler blue */
   --color-accent-teal-light: #73B0C8;
+
+  --color-accent-violet:     #8B7FD9;
+  --color-accent-amber:      #F4C95D;
+  --color-danger:            #F06763;
+
+  --color-overlay:           #FFFFFF;
 
   /* Typography — font variables set by next/font in layout.tsx */
   --font-family-body: var(--font-body), "Space Grotesk", system-ui, sans-serif;
@@ -22,6 +33,47 @@
   --radius-lg: 16px;
   --radius-xl: 24px;
   --radius-full: 9999px;
+}
+
+/* Violet + amber + red scales */
+:root {
+  --violet-50:  #F0EEFA;
+  --violet-100: #DCD8F1;
+  --violet-200: #C4BDE8;
+  --violet-300: #ABA2DE;
+  --violet-400: #9888D4;
+  --violet-500: #8B7FD9;
+  --violet-600: #6F62BF;
+  --violet-700: #544AA0;
+  --violet-800: #3C347A;
+  --violet-900: #262150;
+  --violet-a10: rgba(139, 127, 217, 0.10);
+  --violet-a20: rgba(139, 127, 217, 0.20);
+  --violet-a30: rgba(139, 127, 217, 0.30);
+  --violet-a40: rgba(139, 127, 217, 0.40);
+
+  --amber-50:   #FEF7E3;
+  --amber-100:  #FCEBB8;
+  --amber-200:  #FADF8D;
+  --amber-300:  #F8D374;
+  --amber-400:  #F6CE66;
+  --amber-500:  #F4C95D;
+  --amber-600:  #D4A947;
+  --amber-700:  #A88434;
+  --amber-800:  #7A5F22;
+  --amber-900:  #4D3B14;
+  --amber-a10:  rgba(244, 201, 93, 0.10);
+  --amber-a20:  rgba(244, 201, 93, 0.20);
+  --amber-a30:  rgba(244, 201, 93, 0.30);
+
+  --red-500: #F06763;
+  --red-600: #D94E4A;
+  --red-700: #B03B37;
+  --red-a10: rgba(240, 103, 99, 0.10);
+  --red-a20: rgba(240, 103, 99, 0.20);
+
+  --shadow-violet: 0 10px 25px -5px rgba(139, 127, 217, 0.25);
+  --shadow-amber:  0 10px 25px -5px rgba(244, 201, 93, 0.20);
 }
 
 /* Base styles */

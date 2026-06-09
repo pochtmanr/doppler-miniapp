@@ -43,7 +43,15 @@ export default function Home() {
       window.Telegram.WebApp.expand();
     }
 
-    // Fetch the real VPN-format account ID for promo validation
+    // Read account_id from URL query parameter (passed by bot's subscribe button)
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlAccountId = urlParams.get('account_id');
+    if (urlAccountId && /^VPN-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/.test(urlAccountId)) {
+      setAccountId(urlAccountId);
+      return; // No need to fetch from API if we already have it from URL
+    }
+
+    // Fallback: fetch the real VPN-format account ID via Telegram initData
     const fetchAccountId = async () => {
       try {
         const initData = window.Telegram?.WebApp?.initData || '';
@@ -146,6 +154,12 @@ export default function Home() {
         />
         <h1 className="font-display text-2xl font-semibold mb-2">{m.title}</h1>
         <p className="text-text-muted text-sm">{m.subtitle}</p>
+        {accountId && (
+          <div className="mt-3 inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-3 py-1.5">
+            <span className="text-text-muted text-xs">Account:</span>
+            <span className="text-accent-teal-light text-xs font-mono font-medium">{accountId}</span>
+          </div>
+        )}
       </div>
 
       {/* Plans */}
