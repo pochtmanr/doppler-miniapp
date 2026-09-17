@@ -11,3 +11,9 @@ next-env.d.ts
 .claude/settings.local.json
 docs/NEXT-SESSION-PROMPT.md
 NEXT_SESSION_PROMPT.md
+
+# macOS
+.DS_Store
+
+# agent/session scratch
+**/.superpowers/
