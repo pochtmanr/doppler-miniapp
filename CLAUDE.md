@@ -5,7 +5,7 @@
 Buying now happens through the landing web checkout (`/api/checkout/init` → Revolut / OxaPay),
 which `doppler-support-bot` calls. This Mini App is **not deployed** (no Vercel project; `vercel
 project ls` lists dopplervpn, bafccoil, simnetiq.store, visachecker, drlanding) and has no local
-commits since the clone. Every `web_app` "Subscribe" button in `doppler-bot` still points at
+commits since the clone. Every `web_app` "Subscribe" button in `doppler-telegram-bot` still points at
 `MINIAPP_URL`, i.e. at nothing — those are being removed.
 
 Three things must be fixed before this ships:
@@ -58,7 +58,7 @@ src/
 ## Key Patterns
 - **Telegram WebApp SDK** — must include `@twa-dev/sdk` or manual script in `layout.tsx` to access `window.Telegram.WebApp`
 - **User auth** — derive Telegram user identity from `window.Telegram.WebApp.initData` (validate server-side)
-- Shares Supabase backend with `landing/` and `bot/`
+- Shares Supabase backend with `doppler-web/` and `bot/`
 
 ## Backend Integration
 - **Supabase tables:** `accounts` (planned R/W), `vpn_servers` (planned R), `vpn_user_configs` (planned R)
@@ -99,5 +99,5 @@ npm run typecheck # TypeScript check
 
 ## Related Projects
 - `bot/` — Current Telegram entry point; Mini App is planned to supplement it
-- `landing/` — Shares same Supabase project + API patterns
+- `doppler-web/` — Shares same Supabase project + API patterns
 - `ios/` / `android/` — Same `accounts` table + RPCs for account system
