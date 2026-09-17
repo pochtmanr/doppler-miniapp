@@ -1,7 +1,31 @@
 # Doppler Mini App
 
+## ⛔ Shelved 2026-09-17 — do not deploy without fixing the bugs below
+
+Buying now happens through the landing web checkout (`/api/checkout/init` → Revolut / OxaPay),
+which `doppler-support-bot` calls. This Mini App is **not deployed** (no Vercel project; `vercel
+project ls` lists dopplervpn, bafccoil, simnetiq.store, visachecker, drlanding) and has no local
+commits since the clone. Every `web_app` "Subscribe" button in `doppler-bot` still points at
+`MINIAPP_URL`, i.e. at nothing — those are being removed.
+
+Three things must be fixed before this ships:
+
+1. **Promo codes are charged at full price.** `src/app/page.tsx:122` posts `promoId`, but
+   `src/app/api/checkout/route.ts:31` destructures only `{ planId, initData }` and creates the
+   Paddle transaction at the fixed `priceId`. The user sees a discount and is billed the full
+   amount. `/api/promo/validate` also never writes `promo_redemptions`, so `current_redemptions`
+   never increments and the "already redeemed" check can never fire.
+2. **Webhook account auto-create is schema-wrong.** `src/app/api/webhook/route.ts:106-114` inserts
+   `accounts { id: 'VPN-XXXX-XXXX-XXXX' }`, but `accounts.id` is a UUID and the code lives in
+   `accounts.account_id`. The insert fails, the handler 500s, and a paid transaction grants nothing.
+3. **`PADDLE_ENVIRONMENT` defaults to sandbox** (`checkout/route.ts:10`, `webhook/route.ts:9`), so a
+   missing env var silently gives real users a sandbox checkout instead of an error.
+
+Also worth knowing: `/api/status` returns the accounts UUID as `accountId` and the UI renders it as
+the user's Account ID (`page.tsx:160`), and nothing notifies the user in Telegram after payment.
+
 ## Overview
-Telegram Mini App for Doppler VPN — subscription management and VPN config delivery inside Telegram without installing a separate app. Early development stage; scaffolded but not yet deployed or registered as a Telegram Mini App. Next.js 16, no GitHub remote yet.
+Telegram Mini App for Doppler VPN — subscription management inside Telegram without installing a separate app. Scaffolded, never deployed or registered as a Telegram Mini App. Next.js 16.
 
 ## Tech Stack
 - **Framework:** Next.js 16 (App Router)
@@ -38,7 +62,7 @@ src/
 
 ## Backend Integration
 - **Supabase tables:** `accounts` (planned R/W), `vpn_servers` (planned R), `vpn_user_configs` (planned R)
-- **External APIs:** Stripe (planned), Telegram WebApp API
+- **External APIs:** Paddle Billing, RevenueCat, Telegram WebApp API
 - **Auth model:** Telegram `initData` verification (not Supabase Auth)
 
 ## Environment Variables
