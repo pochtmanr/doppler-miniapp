@@ -1,50 +1,37 @@
-# Doppler VPN — Telegram Mini App (shelved)
+# Doppler VPN — Telegram Mini App
 
-A Telegram Mini App for managing a Doppler subscription without leaving Telegram.
+The paywall that @dopplercreatebot opens from its menu button. It shows the plans, previews
+promo codes, and starts a payment. It takes no payments itself: everything goes through
+`doppler-web`.
 
-> ## ⛔ Shelved 2026-09-17 — do not deploy as-is
->
-> Buying now happens through the `doppler-web` checkout (`/api/checkout/init` → Revolut /
-> OxaPay), which `doppler-support-bot` calls. This Mini App is **not deployed**, has no Vercel
-> project, and was never registered with BotFather.
->
-> **Three bugs must be fixed before it can ship.** They are not cosmetic — each one takes money
-> and gives nothing back.
+## How a purchase works
 
-## Blocking bugs
+1. Telegram opens the app with signed `initData`. Every API route validates it against
+   `TELEGRAM_BOT_TOKEN` and rejects it after 24 hours.
+2. `/api/status` looks up the account the bot linked on /start (`telegram_users` →
+   `accounts`). The app never creates accounts; with no link it asks the user to press Start.
+3. `/api/promo` previews a code through doppler-web's `/api/promo/validate`.
+4. `/api/checkout` calls doppler-web's `POST /api/checkout/telegram` with the
+   `x-checkout-secret` header. doppler-web re-prices the promo, then returns either a Revolut
+   `order_token` (card, opened with `payWithPopup`) or an OxaPay address (crypto, shown in the app).
+5. doppler-web's Revolut and OxaPay webhooks grant Pro and redeem the promo. The Mini App has
+   no webhook.
 
-1. **Promo codes are charged at full price.**
-   `src/app/page.tsx` posts `promoId`, but `src/app/api/checkout/route.ts` destructures only
-   `{ planId, initData }` and creates the Paddle transaction at the fixed `priceId`. The user
-   sees a discount and is billed the full amount.
-   `/api/promo/validate` also never writes `promo_redemptions`, so `current_redemptions` never
-   increments and the "already redeemed" check can never fire.
+The account is always taken from `initData`, never from the `?account_id=` the bot adds to
+the URL.
 
-2. **Webhook account auto-create is schema-wrong.**
-   `src/app/api/webhook/route.ts` inserts `accounts { id: 'VPN-XXXX-XXXX-XXXX' }`, but
-   `accounts.id` is a UUID — the code belongs in `accounts.account_id`. The insert fails, the
-   handler 500s, and **a paid transaction grants nothing.**
+## Deployment
 
-3. **`PADDLE_ENVIRONMENT` defaults to sandbox.**
-   In both `checkout/route.ts` and `webhook/route.ts`. A missing env var silently hands real
-   users a sandbox checkout instead of failing loudly.
+Vercel project `romans-projects-a19aa0c4/doppler-telegram-miniapp`.
 
-Also worth knowing: `/api/status` returns the `accounts` UUID as `accountId` and the UI renders
-it as the user's Account ID, and nothing notifies the user in Telegram after payment.
+An older Paddle build is still live at `doppler-miniapp.vercel.app` on a Vercel account we
+don't control. Paddle refuses its live charges. Nothing should point there.
 
-## Stack
+## Environment
 
-Next.js 16 (App Router) · TypeScript · Tailwind CSS v4 · Supabase · Paddle Billing
-
-```
-src/
-  app/
-    layout.tsx     Root layout — loads the Telegram WebApp SDK
-    page.tsx       Plans + checkout entry
-    api/           checkout · webhook · status · promo/validate
-    status/  success/  privacy/  terms/
-  components/  lib/  types/  fonts/
-```
+See `.env.example`. `CHECKOUT_SHARED_SECRET` must match the value on the `dopplervpn`
+Vercel project. It is stored as Sensitive there, so to change it, set a new value on both
+projects and redeploy both.
 
 ## Running locally
 
@@ -55,29 +42,10 @@ npm run dev                    # http://localhost:3000
 npm run typecheck
 ```
 
-## Environment
-
-```
-NEXT_PUBLIC_SUPABASE_URL      NEXT_PUBLIC_SUPABASE_ANON_KEY
-SUPABASE_SERVICE_ROLE_KEY
-PADDLE_API_KEY                PADDLE_WEBHOOK_SECRET
-PADDLE_ENVIRONMENT            sandbox | production — set it explicitly, see bug 3
-PADDLE_PRICE_ID_MONTHLY / _6M / _YEARLY
-```
-
-## If it is ever revived
-
-1. Fix the three bugs above.
-2. Decide whether Paddle is still the processor — the rest of the product moved to Revolut and
-   OxaPay through `doppler-web`. Running a fourth payment path needs a reason.
-3. Create the Vercel project and deploy.
-4. Register with @BotFather (`/newapp`) and point it at the deployment.
-5. Configure the Paddle webhook at `https://<domain>/api/webhook`.
-
-**Auth model:** Telegram `initData`, validated server-side. Never trust a client-supplied
-identity without that check.
+Outside Telegram there is no `initData`, so the page only says to open it from the bot.
 
 ## Related
 
-`doppler-support-bot` — where buying happens today · `doppler-web` — hosts the live checkout ·
-[`CLAUDE.md`](CLAUDE.md)
+`doppler-web`: checkout, promo pricing, payment webhooks. `/opt/doppler-bot` on the Poland
+VPS: @dopplercreatebot, which sets each chat's menu button to this app. The URL is in
+`src/config.ts` (`links.miniapp`).

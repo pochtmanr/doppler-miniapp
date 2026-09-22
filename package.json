@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@paddle/paddle-node-sdk": "^3.6.1",
+    "@revolut/checkout": "^1.1.25",
     "@supabase/supabase-js": "^2.95.3",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/node": "^25.2.3",
