@@ -35,14 +35,15 @@
     "cryptoNote": "Ödeme ağda onaylandığında Pro otomatik olarak açılır.",
     "back": "Geri",
     "noAccount": "@dopplercreatebot'u açıp Başlat'a dokunun, ardından bu uygulamayı yeniden açın.",
-    "openInTelegram": "Bu uygulamayı Telegram'daki Doppler VPN botundan açın."
+    "openInTelegram": "Bu uygulamayı Telegram'daki Doppler VPN botundan açın.",
+    "extendHint": "Mevcut Pro'na ay ekle",
+    "storeBilledShort": "App Store veya Google Play üzerinden yenilenir"
   },
   "account": {
     "pro": "Pro",
     "free": "Ücretsiz",
     "activeUntil": "{date} tarihine kadar aktif",
     "daysLeft": "Kalan gün: {days}",
-    "devices": "Cihazlar: {used}/{max}",
     "expiredOn": "Pro aboneliğiniz {date} tarihinde sona erdi",
     "noSubscription": "Aktif abonelik yok",
     "idHint": "Doppler anahtarınız. Her cihazda bununla giriş yapın.",
@@ -54,6 +55,27 @@
     "storeWarning": "Pro aboneliğiniz App Store veya Google Play üzerinden yenileniyor. Burada ödeme yapmak süre ekler, ancak mağaza ücret almaya devam eder. Önce mağaza ayarlarından aboneliği iptal edin.",
     "loading": "Yükleniyor…",
     "loadError": "Hesabınız yüklenemedi."
+  },
+  "devices": {
+    "title": "Cihazlar",
+    "count": "{used}/{max}",
+    "main": "Ana cihaz",
+    "lastActive": "{when} aktif",
+    "empty": "Henüz cihaz yok. Doppler uygulamasına ID'nle giriş yap.",
+    "hint": "Cihazları Doppler uygulamasındaki Cihazlar ekranından kaldırabilirsin.",
+    "browser": "Tarayıcı",
+    "unknown": "Cihaz"
+  },
+  "blog": {
+    "title": "Blogdan",
+    "all": "Tüm yazılar",
+    "close": "Kapat",
+    "openWeb": "Web sitesinde aç",
+    "error": "Blog yüklenemedi.",
+    "retry": "Tekrar dene",
+    "empty": "Henüz yazı yok.",
+    "missing": "Bu yazı artık mevcut değil.",
+    "englishOnly": "Bu yazı henüz dilinde mevcut değil, bu yüzden İngilizcesini gösteriyoruz."
   },
   "pay": {
     "confirming": "Ödemeniz onaylanıyor…",
@@ -69,13 +91,12 @@
     "done": "Pro {date} tarihine kadar aktif",
     "doneNote": "Hesap ID'nizle herhangi bir cihazda Doppler'e giriş yapın.",
     "invoiceExpired": "Bu faturanın süresi doldu. Bu adrese hiçbir şey göndermeyin — geri dönüp yeni bir ödeme başlatın.",
-    "close":"Kapat"
+    "close": "Kapat"
   },
   "apps": {
     "eyebrow": "Mevcut platformlar",
     "title": "Her cihazda Doppler VPN",
-    "directDownload": "Doğrudan indirme",
-    "blog": "Doppler blogunu okuyun"
+    "directDownload": "Doğrudan indirme"
   },
   "legal": {
     "privacy": "Gizlilik Politikası",

@@ -35,14 +35,15 @@
     "cryptoNote": "网络确认付款后，Pro 将自动开通。",
     "back": "返回",
     "noAccount": "请打开 @dopplercreatebot 并点击“开始”，然后重新打开此应用。",
-    "openInTelegram": "请从 Telegram 中的 Doppler VPN 机器人打开此应用。"
+    "openInTelegram": "请从 Telegram 中的 Doppler VPN 机器人打开此应用。",
+    "extendHint": "为当前 Pro 增加月数",
+    "storeBilledShort": "通过 App Store 或 Google Play 续订"
   },
   "account": {
     "pro": "Pro",
     "free": "免费",
     "activeUntil": "有效期至 {date}",
     "daysLeft": "剩余天数：{days}",
-    "devices": "设备：{used}/{max}",
     "expiredOn": "您的 Pro 已于 {date} 到期",
     "noSubscription": "无有效订阅",
     "idHint": "这是您的 Doppler 密钥，可在任何设备上用它登录。",
@@ -54,6 +55,27 @@
     "storeWarning": "您的 Pro 通过 App Store 或 Google Play 自动续订。在此付款会增加时长，但商店仍会继续扣费。请先在商店设置中取消订阅。",
     "loading": "加载中…",
     "loadError": "无法加载您的账户。"
+  },
+  "devices": {
+    "title": "设备",
+    "count": "{used}/{max}",
+    "main": "主设备",
+    "lastActive": "{when}活跃",
+    "empty": "还没有设备。请用你的 ID 登录 Doppler 应用。",
+    "hint": "可在 Doppler 应用的“设备”页面移除设备。",
+    "browser": "浏览器",
+    "unknown": "设备"
+  },
+  "blog": {
+    "title": "博客精选",
+    "all": "全部文章",
+    "close": "关闭",
+    "openWeb": "在网站上打开",
+    "error": "博客加载失败。",
+    "retry": "重试",
+    "empty": "暂无文章。",
+    "missing": "这篇文章已无法访问。",
+    "englishOnly": "这篇文章还没有你的语言版本，先为你显示英文版。"
   },
   "pay": {
     "confirming": "正在确认您的付款…",
@@ -69,13 +91,12 @@
     "done": "Pro 有效期至 {date}",
     "doneNote": "在任何设备上使用您的账户 ID 登录 Doppler。",
     "invoiceExpired": "此账单已过期。请勿再向该地址付款，请返回并重新发起付款。",
-    "close":"关闭"
+    "close": "关闭"
   },
   "apps": {
     "eyebrow": "支持平台",
     "title": "Doppler VPN 适用于所有设备",
-    "directDownload": "直接下载",
-    "blog": "阅读 Doppler 博客"
+    "directDownload": "直接下载"
   },
   "legal": {
     "privacy": "隐私政策",

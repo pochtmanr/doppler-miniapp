@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { telegramUserFrom } from '@/lib/telegram';
-import { countDevices, findLinkedAccount } from '@/lib/account';
+import { countDevices, findLinkedAccount, listDevices } from '@/lib/account';
 
 /** doppler-web's default when accounts.max_devices is unset (api/account/devices). */
 const DEFAULT_MAX_DEVICES = 10;
@@ -11,7 +11,7 @@ const DEFAULT_MAX_DEVICES = 10;
  */
 export async function POST(req: NextRequest) {
   try {
-    const { initData } = await req.json();
+    const { initData, devices: withDevices } = await req.json();
 
     const user = telegramUserFrom(initData);
     if (!user) {
@@ -25,6 +25,8 @@ export async function POST(req: NextRequest) {
 
     const expiresAt = account.expiresAt;
     const isActive = account.tier !== 'free' && !!account.tier && !!expiresAt && new Date(expiresAt) > new Date();
+    // The list is for the home screen. Payment polling leaves the flag off and gets the count.
+    const devices = withDevices === true ? await listDevices(account.uuid) : null;
 
     return NextResponse.json(
       {
@@ -33,7 +35,8 @@ export async function POST(req: NextRequest) {
         isActive,
         expiresAt,
         store: account.store,
-        devicesUsed: await countDevices(account.uuid),
+        devicesUsed: devices ? devices.length : await countDevices(account.uuid),
+        ...(devices ? { devices } : {}),
         maxDevices: account.maxDevices || DEFAULT_MAX_DEVICES,
       },
       { headers: { 'Cache-Control': 'private, no-store' } },

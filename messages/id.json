@@ -35,14 +35,15 @@
     "cryptoNote": "Pro aktif otomatis setelah pembayaran dikonfirmasi jaringan.",
     "back": "Kembali",
     "noAccount": "Buka @dopplercreatebot dan ketuk Mulai, lalu buka aplikasi ini lagi.",
-    "openInTelegram": "Buka aplikasi ini dari bot Doppler VPN di Telegram."
+    "openInTelegram": "Buka aplikasi ini dari bot Doppler VPN di Telegram.",
+    "extendHint": "Tambah bulan ke Pro Anda saat ini",
+    "storeBilledShort": "Diperpanjang lewat App Store atau Google Play"
   },
   "account": {
     "pro": "Pro",
     "free": "Gratis",
     "activeUntil": "Aktif hingga {date}",
     "daysLeft": "Sisa hari: {days}",
-    "devices": "Perangkat: {used} dari {max}",
     "expiredOn": "Pro Anda berakhir pada {date}",
     "noSubscription": "Tidak ada langganan aktif",
     "idHint": "Kunci Doppler Anda. Masuk dengan ID ini di perangkat mana pun.",
@@ -54,6 +55,27 @@
     "storeWarning": "Pro Anda diperpanjang melalui App Store atau Google Play. Membayar di sini menambah waktu, tetapi toko akan terus menagih Anda. Batalkan dulu langganan di pengaturan toko.",
     "loading": "Memuat…",
     "loadError": "Akun Anda tidak dapat dimuat."
+  },
+  "devices": {
+    "title": "Perangkat",
+    "count": "{used} dari {max}",
+    "main": "Utama",
+    "lastActive": "aktif {when}",
+    "empty": "Belum ada perangkat. Masuk ke aplikasi Doppler dengan ID Anda.",
+    "hint": "Hapus perangkat di aplikasi Doppler, pada layar Perangkat.",
+    "browser": "Browser",
+    "unknown": "Perangkat"
+  },
+  "blog": {
+    "title": "Dari blog",
+    "all": "Semua artikel",
+    "close": "Tutup",
+    "openWeb": "Buka di situs web",
+    "error": "Gagal memuat blog.",
+    "retry": "Coba lagi",
+    "empty": "Belum ada artikel.",
+    "missing": "Artikel ini sudah tidak tersedia.",
+    "englishOnly": "Artikel ini belum tersedia dalam bahasa Anda, jadi kami tampilkan dalam bahasa Inggris."
   },
   "pay": {
     "confirming": "Mengonfirmasi pembayaran Anda…",
@@ -69,13 +91,12 @@
     "done": "Pro aktif hingga {date}",
     "doneNote": "Masuk ke Doppler di perangkat mana pun dengan ID akun Anda.",
     "invoiceExpired": "Tagihan ini sudah kedaluwarsa. Jangan kirim apa pun ke alamat ini — kembali dan mulai pembayaran baru.",
-    "close":"Tutup"
+    "close": "Tutup"
   },
   "apps": {
     "eyebrow": "Tersedia di",
     "title": "Doppler VPN di setiap perangkat",
-    "directDownload": "Unduh langsung",
-    "blog": "Baca blog Doppler"
+    "directDownload": "Unduh langsung"
   },
   "legal": {
     "privacy": "Kebijakan Privasi",

@@ -62,7 +62,14 @@ export async function findLinkedAccount(telegramId: number): Promise<LinkedAccou
   };
 }
 
-/** Signed-in devices, counted the way doppler-web's /api/account/devices lists them. */
+export interface Device {
+  name: string;
+  type: string;
+  isMain: boolean;
+  lastActiveAt: string | null;
+}
+
+/** Signed-in devices, counted without reading them (payment polling). */
 export async function countDevices(accountUuid: string): Promise<number> {
   const { count, error } = await supabaseAdmin
     .from('device_sessions')
@@ -70,4 +77,25 @@ export async function countDevices(accountUuid: string): Promise<number> {
     .eq('account_id', accountUuid);
   if (error) throw error;
   return count ?? 0;
+}
+
+/**
+ * Signed-in devices, listed like doppler-web's /api/account/devices: main first, then
+ * most recently active. device_id is never selected — with the account it is what
+ * remove_device takes.
+ */
+export async function listDevices(accountUuid: string): Promise<Device[]> {
+  const { data, error } = await supabaseAdmin
+    .from('device_sessions')
+    .select('device_name, device_type, is_main, last_active_at')
+    .eq('account_id', accountUuid)
+    .order('is_main', { ascending: false })
+    .order('last_active_at', { ascending: false, nullsFirst: false });
+  if (error) throw error;
+  return (data ?? []).map((d) => ({
+    name: d.device_name,
+    type: d.device_type,
+    isMain: !!d.is_main,
+    lastActiveAt: d.last_active_at,
+  }));
 }

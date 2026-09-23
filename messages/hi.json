@@ -35,14 +35,15 @@
     "cryptoNote": "नेटवर्क पर भुगतान की पुष्टि होते ही Pro अपने-आप चालू हो जाएगा।",
     "back": "वापस",
     "noAccount": "@dopplercreatebot खोलें और Start दबाएँ, फिर यह ऐप दोबारा खोलें।",
-    "openInTelegram": "यह ऐप Telegram में Doppler VPN बॉट से खोलें।"
+    "openInTelegram": "यह ऐप Telegram में Doppler VPN बॉट से खोलें।",
+    "extendHint": "अपने मौजूदा Pro में महीने जोड़ें",
+    "storeBilledShort": "App Store या Google Play के ज़रिए रिन्यू होता है"
   },
   "account": {
     "pro": "Pro",
     "free": "मुफ़्त",
     "activeUntil": "{date} तक सक्रिय",
     "daysLeft": "बचे दिन: {days}",
-    "devices": "डिवाइस: {max} में से {used}",
     "expiredOn": "आपकी Pro सदस्यता {date} को समाप्त हो गई",
     "noSubscription": "कोई सक्रिय सदस्यता नहीं",
     "idHint": "यह Doppler की आपकी कुंजी है। किसी भी डिवाइस पर इससे साइन इन करें।",
@@ -54,6 +55,27 @@
     "storeWarning": "आपकी Pro सदस्यता App Store या Google Play से नवीनीकृत होती है। यहां भुगतान करने से समय बढ़ेगा, लेकिन स्टोर शुल्क लेता रहेगा। पहले स्टोर की सेटिंग्स में सदस्यता रद्द करें।",
     "loading": "लोड हो रहा है…",
     "loadError": "आपका खाता लोड नहीं हो सका।"
+  },
+  "devices": {
+    "title": "डिवाइस",
+    "count": "{max} में से {used}",
+    "main": "मुख्य",
+    "lastActive": "{when} सक्रिय",
+    "empty": "अभी कोई डिवाइस नहीं है। अपने ID से Doppler ऐप में साइन इन करें।",
+    "hint": "डिवाइस हटाने के लिए Doppler ऐप में डिवाइस स्क्रीन खोलें।",
+    "browser": "ब्राउज़र",
+    "unknown": "डिवाइस"
+  },
+  "blog": {
+    "title": "ब्लॉग से",
+    "all": "सभी लेख",
+    "close": "बंद करें",
+    "openWeb": "वेबसाइट पर खोलें",
+    "error": "ब्लॉग लोड नहीं हो सका।",
+    "retry": "फिर से कोशिश करें",
+    "empty": "अभी कोई लेख नहीं है।",
+    "missing": "यह लेख अब उपलब्ध नहीं है।",
+    "englishOnly": "यह लेख अभी आपकी भाषा में उपलब्ध नहीं है, इसलिए हम इसे अंग्रेज़ी में दिखा रहे हैं।"
   },
   "pay": {
     "confirming": "आपके भुगतान की पुष्टि हो रही है…",
@@ -69,13 +91,12 @@
     "done": "Pro {date} तक सक्रिय है",
     "doneNote": "अपने खाता ID से किसी भी डिवाइस पर Doppler में साइन इन करें।",
     "invoiceExpired": "इस इनवॉइस की समय-सीमा समाप्त हो गई है। इस पते पर कुछ न भेजें — वापस जाएं और नया भुगतान शुरू करें।",
-    "close":"बंद करें"
+    "close": "बंद करें"
   },
   "apps": {
     "eyebrow": "उपलब्ध है",
     "title": "हर डिवाइस पर Doppler VPN",
-    "directDownload": "सीधे डाउनलोड करें",
-    "blog": "Doppler ब्लॉग पढ़ें"
+    "directDownload": "सीधे डाउनलोड करें"
   },
   "legal": {
     "privacy": "गोपनीयता नीति",

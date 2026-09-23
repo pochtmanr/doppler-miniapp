@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { Messages } from '@/lib/i18n';
-import { DOWNLOADS, blogUrl, openExternal, type Platform } from '@/lib/links';
+import { DOWNLOADS, openExternal, type Platform } from '@/lib/links';
 import { PlatformLogo, type PlatformIcon } from './platform-icons';
 import { FOCUS } from './ui/recipes';
 
@@ -25,9 +25,9 @@ function currentPlatform(): Platform | null {
 
 /**
  * The landing's "Available on" block (doppler-web sections/platforms-available.tsx),
- * minus its animated glyph band, plus the blog.
+ * minus its animated glyph band. The blog has its own section and reader.
  */
-export function Downloads({ lang, messages }: { lang: string; messages: Messages }) {
+export function Downloads({ messages }: { lang?: string; messages: Messages }) {
   const t = messages.apps;
   const [tiles, setTiles] = useState(TILES);
 
@@ -62,16 +62,6 @@ export function Downloads({ lang, messages }: { lang: string; messages: Messages
         ))}
       </div>
 
-      <button
-        type="button"
-        onClick={() => openExternal(blogUrl(lang))}
-        className={`mt-3 flex w-full items-center justify-between rounded-xl border border-overlay/10 bg-bg-secondary/20 px-4 py-3.5 text-sm font-medium text-text-primary hover:border-accent-teal/30 transition-colors ${FOCUS}`}
-      >
-        <span>{t.blog}</span>
-        <svg className="w-4 h-4 shrink-0 text-text-tertiary rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
-          <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
     </section>
   );
 }

@@ -35,14 +35,15 @@
     "cryptoNote": "Pro turns on automatically once the payment is confirmed on the network.",
     "back": "Back",
     "noAccount": "Open @dopplercreatebot and tap Start, then open this app again.",
-    "openInTelegram": "Open this app from the Doppler VPN bot in Telegram."
+    "openInTelegram": "Open this app from the Doppler VPN bot in Telegram.",
+    "extendHint": "Add months to your current Pro",
+    "storeBilledShort": "Renews through the App Store or Google Play"
   },
   "account": {
     "pro": "Pro",
     "free": "Free",
     "activeUntil": "Active until {date}",
     "daysLeft": "Days left: {days}",
-    "devices": "Devices: {used} of {max}",
     "expiredOn": "Pro expired on {date}",
     "noSubscription": "No active subscription",
     "idHint": "Your key to Doppler. Sign in with it on any device.",
@@ -54,6 +55,27 @@
     "storeWarning": "Your Pro renews through the App Store or Google Play. Paying here adds time, but the store will keep charging you. Cancel it in your store settings first.",
     "loading": "Loading…",
     "loadError": "Couldn't load your account."
+  },
+  "devices": {
+    "title": "Devices",
+    "count": "{used} of {max}",
+    "main": "Main",
+    "lastActive": "active {when}",
+    "empty": "No devices yet. Sign in to the Doppler app with your ID.",
+    "hint": "Remove devices in the Doppler app, on the Devices screen.",
+    "browser": "Browser",
+    "unknown": "Device"
+  },
+  "blog": {
+    "title": "From the blog",
+    "all": "All posts",
+    "close": "Close",
+    "openWeb": "Open on the website",
+    "error": "Couldn't load the blog.",
+    "retry": "Try again",
+    "empty": "No posts yet.",
+    "missing": "This post is no longer available.",
+    "englishOnly": "This article isn't available in your language yet, so here it is in English."
   },
   "pay": {
     "confirming": "Confirming your payment…",
@@ -69,13 +91,12 @@
     "done": "Pro is active until {date}",
     "doneNote": "Sign in to Doppler on any device with your Account ID.",
     "invoiceExpired": "This invoice has expired. Don't send anything to it — go back and start a new payment.",
-    "close":"Close"
+    "close": "Close"
   },
   "apps": {
     "eyebrow": "Available on",
     "title": "Doppler VPN on every device",
-    "directDownload": "Direct download",
-    "blog": "Read the Doppler blog"
+    "directDownload": "Direct download"
   },
   "legal": {
     "privacy": "Privacy Policy",

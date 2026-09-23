@@ -35,14 +35,15 @@
     "cryptoNote": "Pro se activează automat după ce rețeaua confirmă plata.",
     "back": "Înapoi",
     "noAccount": "Deschide @dopplercreatebot și apasă Start, apoi redeschide această aplicație.",
-    "openInTelegram": "Deschide această aplicație din botul Doppler VPN din Telegram."
+    "openInTelegram": "Deschide această aplicație din botul Doppler VPN din Telegram.",
+    "extendHint": "Adaugă luni la Pro-ul actual",
+    "storeBilledShort": "Se reînnoiește prin App Store sau Google Play"
   },
   "account": {
     "pro": "Pro",
     "free": "Gratuit",
     "activeUntil": "Activ până la {date}",
     "daysLeft": "Zile rămase: {days}",
-    "devices": "Dispozitive: {used} din {max}",
     "expiredOn": "Pro a expirat pe {date}",
     "noSubscription": "Niciun abonament activ",
     "idHint": "Cheia ta pentru Doppler. Conectează-te cu ea pe orice dispozitiv.",
@@ -54,6 +55,27 @@
     "storeWarning": "Abonamentul tău Pro se reînnoiește prin App Store sau Google Play. Plata de aici adaugă timp, dar magazinul va continua să te taxeze. Anulează mai întâi abonamentul din setările magazinului.",
     "loading": "Se încarcă…",
     "loadError": "Contul nu a putut fi încărcat."
+  },
+  "devices": {
+    "title": "Dispozitive",
+    "count": "{used} din {max}",
+    "main": "Principal",
+    "lastActive": "activ {when}",
+    "empty": "Încă nu ai dispozitive. Conectează-te în aplicația Doppler cu ID-ul tău.",
+    "hint": "Poți elimina dispozitive din aplicația Doppler, în ecranul Dispozitive.",
+    "browser": "Browser",
+    "unknown": "Dispozitiv"
+  },
+  "blog": {
+    "title": "Din blog",
+    "all": "Toate articolele",
+    "close": "Închide",
+    "openWeb": "Deschide pe site",
+    "error": "Blogul nu a putut fi încărcat.",
+    "retry": "Încearcă din nou",
+    "empty": "Încă nu există articole.",
+    "missing": "Acest articol nu mai este disponibil.",
+    "englishOnly": "Acest articol nu este încă disponibil în limba ta, așa că îl afișăm în engleză."
   },
   "pay": {
     "confirming": "Confirmăm plata…",
@@ -69,13 +91,12 @@
     "done": "Pro activ până la {date}",
     "doneNote": "Conectează-te la Doppler pe orice dispozitiv cu ID-ul contului tău.",
     "invoiceExpired": "Această factură a expirat. Nu mai trimite nimic la această adresă — revino și începe o plată nouă.",
-    "close":"Închide"
+    "close": "Închide"
   },
   "apps": {
     "eyebrow": "Disponibil pe",
     "title": "Doppler VPN pe orice dispozitiv",
-    "directDownload": "Descărcare directă",
-    "blog": "Citește blogul Doppler"
+    "directDownload": "Descărcare directă"
   },
   "legal": {
     "privacy": "Politica de confidențialitate",

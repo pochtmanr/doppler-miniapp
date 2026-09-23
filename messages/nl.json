@@ -35,14 +35,15 @@
     "cryptoNote": "Pro wordt automatisch actief zodra het netwerk de betaling bevestigt.",
     "back": "Terug",
     "noAccount": "Open @dopplercreatebot en tik op Start, open daarna deze app opnieuw.",
-    "openInTelegram": "Open deze app via de Doppler VPN-bot in Telegram."
+    "openInTelegram": "Open deze app via de Doppler VPN-bot in Telegram.",
+    "extendHint": "Voeg maanden toe aan je huidige Pro",
+    "storeBilledShort": "Wordt verlengd via de App Store of Google Play"
   },
   "account": {
     "pro": "Pro",
     "free": "Gratis",
     "activeUntil": "Actief tot {date}",
     "daysLeft": "Dagen over: {days}",
-    "devices": "Apparaten: {used} van {max}",
     "expiredOn": "Je Pro is verlopen op {date}",
     "noSubscription": "Geen actief abonnement",
     "idHint": "Je sleutel tot Doppler. Log hiermee in op elk apparaat.",
@@ -54,6 +55,27 @@
     "storeWarning": "Je Pro wordt verlengd via de App Store of Google Play. Hier betalen voegt tijd toe, maar de store blijft kosten in rekening brengen. Zeg het abonnement eerst op in de instellingen van de store.",
     "loading": "Laden…",
     "loadError": "Je account kon niet worden geladen."
+  },
+  "devices": {
+    "title": "Apparaten",
+    "count": "{used} van {max}",
+    "main": "Hoofdapparaat",
+    "lastActive": "actief {when}",
+    "empty": "Nog geen apparaten. Log in op de Doppler-app met je ID.",
+    "hint": "Verwijder apparaten in de Doppler-app, op het scherm Apparaten.",
+    "browser": "Browser",
+    "unknown": "Apparaat"
+  },
+  "blog": {
+    "title": "Van de blog",
+    "all": "Alle artikelen",
+    "close": "Sluiten",
+    "openWeb": "Openen op de website",
+    "error": "De blog kon niet worden geladen.",
+    "retry": "Opnieuw proberen",
+    "empty": "Nog geen artikelen.",
+    "missing": "Dit artikel is niet meer beschikbaar.",
+    "englishOnly": "Dit artikel is nog niet beschikbaar in jouw taal, dus je leest het in het Engels."
   },
   "pay": {
     "confirming": "Je betaling wordt bevestigd…",
@@ -69,13 +91,12 @@
     "done": "Pro actief tot {date}",
     "doneNote": "Log op elk apparaat in bij Doppler met je account-ID.",
     "invoiceExpired": "Deze factuur is verlopen. Stuur er niets meer naartoe — ga terug en start een nieuwe betaling.",
-    "close":"Sluiten"
+    "close": "Sluiten"
   },
   "apps": {
     "eyebrow": "Beschikbaar op",
     "title": "Doppler VPN op elk apparaat",
-    "directDownload": "Directe download",
-    "blog": "Lees de Doppler-blog"
+    "directDownload": "Directe download"
   },
   "legal": {
     "privacy": "Privacybeleid",

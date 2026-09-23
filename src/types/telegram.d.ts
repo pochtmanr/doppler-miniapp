@@ -31,6 +31,14 @@ interface TelegramWebApp {
   setBackgroundColor: (color: string) => void;
   onEvent: (event: string, cb: () => void) => void;
   offEvent: (event: string, cb: () => void) => void;
+  /** Header back arrow (6.1+). */
+  BackButton: {
+    isVisible: boolean;
+    show: () => void;
+    hide: () => void;
+    onClick: (cb: () => void) => void;
+    offClick: (cb: () => void) => void;
+  };
   MainButton: {
     text: string;
     show: () => void;

@@ -35,14 +35,15 @@
     "cryptoNote": "Pro se activa automáticamente cuando la red confirma el pago.",
     "back": "Atrás",
     "noAccount": "Abre @dopplercreatebot y toca Iniciar, luego vuelve a abrir esta app.",
-    "openInTelegram": "Abre esta app desde el bot de Doppler VPN en Telegram."
+    "openInTelegram": "Abre esta app desde el bot de Doppler VPN en Telegram.",
+    "extendHint": "Añade meses a tu Pro actual",
+    "storeBilledShort": "Se renueva a través de App Store o Google Play"
   },
   "account": {
     "pro": "Pro",
     "free": "Gratis",
     "activeUntil": "Activo hasta el {date}",
     "daysLeft": "Días restantes: {days}",
-    "devices": "Dispositivos: {used} de {max}",
     "expiredOn": "Tu Pro expiró el {date}",
     "noSubscription": "Sin suscripción activa",
     "idHint": "Tu clave de Doppler. Inicia sesión con ella en cualquier dispositivo.",
@@ -54,6 +55,27 @@
     "storeWarning": "Tu Pro se renueva a través de App Store o Google Play. Pagar aquí añade tiempo, pero la tienda seguirá cobrándote. Cancela primero la suscripción en los ajustes de la tienda.",
     "loading": "Cargando…",
     "loadError": "No se pudo cargar tu cuenta."
+  },
+  "devices": {
+    "title": "Dispositivos",
+    "count": "{used} de {max}",
+    "main": "Principal",
+    "lastActive": "activo {when}",
+    "empty": "Aún no hay dispositivos. Inicia sesión en la app de Doppler con tu ID.",
+    "hint": "Puedes eliminar dispositivos en la app de Doppler, en la pantalla Dispositivos.",
+    "browser": "Navegador",
+    "unknown": "Dispositivo"
+  },
+  "blog": {
+    "title": "Del blog",
+    "all": "Todos los artículos",
+    "close": "Cerrar",
+    "openWeb": "Abrir en el sitio web",
+    "error": "No se pudo cargar el blog.",
+    "retry": "Reintentar",
+    "empty": "Todavía no hay artículos.",
+    "missing": "Este artículo ya no está disponible.",
+    "englishOnly": "Este artículo aún no está disponible en tu idioma, así que te lo mostramos en inglés."
   },
   "pay": {
     "confirming": "Confirmando tu pago…",
@@ -69,13 +91,12 @@
     "done": "Pro activo hasta el {date}",
     "doneNote": "Inicia sesión en Doppler en cualquier dispositivo con tu ID de cuenta.",
     "invoiceExpired": "Esta factura ha caducado. No envíes nada a ella: vuelve atrás e inicia un nuevo pago.",
-    "close":"Cerrar"
+    "close": "Cerrar"
   },
   "apps": {
     "eyebrow": "Disponible en",
     "title": "Doppler VPN en todos tus dispositivos",
-    "directDownload": "Descarga directa",
-    "blog": "Leer el blog de Doppler"
+    "directDownload": "Descarga directa"
   },
   "legal": {
     "privacy": "Política de privacidad",

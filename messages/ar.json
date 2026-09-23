@@ -35,14 +35,15 @@
     "cryptoNote": "يتم تفعيل Pro تلقائيًا فور تأكيد الدفع على الشبكة.",
     "back": "رجوع",
     "noAccount": "افتح ‎@dopplercreatebot واضغط «ابدأ»، ثم افتح هذا التطبيق مرة أخرى.",
-    "openInTelegram": "افتح هذا التطبيق من بوت Doppler VPN في تيليجرام."
+    "openInTelegram": "افتح هذا التطبيق من بوت Doppler VPN في تيليجرام.",
+    "extendHint": "أضف أشهرًا إلى اشتراك Pro الحالي",
+    "storeBilledShort": "يتجدد عبر App Store أو Google Play"
   },
   "account": {
     "pro": "Pro",
     "free": "مجاني",
     "activeUntil": "نشط حتى {date}",
     "daysLeft": "الأيام المتبقية: {days}",
-    "devices": "الأجهزة: {used} من {max}",
     "expiredOn": "انتهى اشتراك Pro بتاريخ {date}",
     "noSubscription": "لا يوجد اشتراك نشط",
     "idHint": "مفتاحك إلى Doppler. سجّل الدخول به على أي جهاز.",
@@ -54,6 +55,27 @@
     "storeWarning": "يتجدد اشتراك Pro عبر App Store أو Google Play. الدفع هنا يضيف مدة، لكن المتجر سيستمر في خصم الرسوم. ألغِ الاشتراك أولاً من إعدادات المتجر.",
     "loading": "جارٍ التحميل…",
     "loadError": "تعذّر تحميل حسابك."
+  },
+  "devices": {
+    "title": "الأجهزة",
+    "count": "{used} من {max}",
+    "main": "الرئيسي",
+    "lastActive": "نشط {when}",
+    "empty": "لا توجد أجهزة بعد. سجّل الدخول إلى تطبيق Doppler باستخدام معرّفك.",
+    "hint": "يمكنك إزالة الأجهزة من تطبيق Doppler في شاشة الأجهزة.",
+    "browser": "متصفح",
+    "unknown": "جهاز"
+  },
+  "blog": {
+    "title": "من المدونة",
+    "all": "كل المقالات",
+    "close": "إغلاق",
+    "openWeb": "فتح على الموقع",
+    "error": "تعذّر تحميل المدونة.",
+    "retry": "إعادة المحاولة",
+    "empty": "لا توجد مقالات بعد.",
+    "missing": "هذه المقالة لم تعد متاحة.",
+    "englishOnly": "هذه المقالة غير متوفرة بلغتك بعد، لذا نعرضها بالإنجليزية."
   },
   "pay": {
     "confirming": "جارٍ تأكيد الدفع…",
@@ -69,13 +91,12 @@
     "done": "Pro نشط حتى {date}",
     "doneNote": "سجّل الدخول إلى Doppler على أي جهاز باستخدام معرّف حسابك.",
     "invoiceExpired": "انتهت صلاحية هذه الفاتورة. لا ترسل أي مبلغ إليها — ارجع وابدأ عملية دفع جديدة.",
-    "close":"إغلاق"
+    "close": "إغلاق"
   },
   "apps": {
     "eyebrow": "متوفر على",
     "title": "Doppler VPN على كل جهاز",
-    "directDownload": "تنزيل مباشر",
-    "blog": "اقرأ مدونة Doppler"
+    "directDownload": "تنزيل مباشر"
   },
   "legal": {
     "privacy": "سياسة الخصوصية",

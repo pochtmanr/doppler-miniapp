@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import type { Messages } from '@/lib/i18n';
+import type { Device } from './devices-card';
 import { BTN_FLAT, CARD, CARD_HAIRLINE, CHIP, EYEBROW } from './ui/recipes';
 
 /** What /api/status returns for a linked account. */
@@ -13,6 +14,8 @@ export interface AccountStatus {
   store: string | null;
   devicesUsed: number;
   maxDevices: number;
+  /** Only when requested with `devices: true` (home screen), never during payment polling. */
+  devices?: Device[];
 }
 
 const DAY_MS = 24 * 60 * 60 * 1000;
@@ -25,7 +28,7 @@ export function formatDate(iso: string, lang: string): string {
 
 /**
  * The account the way doppler-web's /[locale]/account shows it: plan, expiry, days
- * left, devices, and the Account ID with a copy button. Card recipe B.
+ * left, and the Account ID with a copy button. Devices have their own card. Card recipe B.
  */
 export function AccountCard({ status, lang, messages }: { status: AccountStatus; lang: string; messages: Messages }) {
   const a = messages.account;
@@ -84,10 +87,6 @@ export function AccountCard({ status, lang, messages }: { status: AccountStatus;
           </p>
         )}
         {!status.isActive && !expired && <p className="text-sm text-text-muted">{a.noSubscription}</p>}
-
-        <p className="text-sm text-text-muted tabular-nums">
-          {a.devices.replace('{used}', String(status.devicesUsed)).replace('{max}', String(status.maxDevices))}
-        </p>
 
         <div className="h-px bg-overlay/10" />
 

@@ -35,14 +35,15 @@
     "cryptoNote": "Pro sẽ tự bật khi mạng xác nhận thanh toán.",
     "back": "Quay lại",
     "noAccount": "Mở @dopplercreatebot và nhấn Bắt đầu, rồi mở lại ứng dụng này.",
-    "openInTelegram": "Hãy mở ứng dụng này từ bot Doppler VPN trong Telegram."
+    "openInTelegram": "Hãy mở ứng dụng này từ bot Doppler VPN trong Telegram.",
+    "extendHint": "Thêm tháng vào gói Pro hiện tại",
+    "storeBilledShort": "Gia hạn qua App Store hoặc Google Play"
   },
   "account": {
     "pro": "Pro",
     "free": "Miễn phí",
     "activeUntil": "Có hiệu lực đến {date}",
     "daysLeft": "Số ngày còn lại: {days}",
-    "devices": "Thiết bị: {used}/{max}",
     "expiredOn": "Gói Pro của bạn đã hết hạn vào {date}",
     "noSubscription": "Không có gói đăng ký nào đang hoạt động",
     "idHint": "Chìa khóa Doppler của bạn. Dùng nó để đăng nhập trên mọi thiết bị.",
@@ -54,6 +55,27 @@
     "storeWarning": "Gói Pro của bạn được gia hạn qua App Store hoặc Google Play. Thanh toán tại đây sẽ cộng thêm thời gian, nhưng cửa hàng vẫn tiếp tục trừ tiền. Hãy hủy gói đăng ký trong cài đặt cửa hàng trước.",
     "loading": "Đang tải…",
     "loadError": "Không thể tải tài khoản của bạn."
+  },
+  "devices": {
+    "title": "Thiết bị",
+    "count": "{used}/{max}",
+    "main": "Chính",
+    "lastActive": "hoạt động {when}",
+    "empty": "Chưa có thiết bị nào. Hãy đăng nhập ứng dụng Doppler bằng ID của bạn.",
+    "hint": "Bạn có thể xóa thiết bị trong ứng dụng Doppler, ở màn hình Thiết bị.",
+    "browser": "Trình duyệt",
+    "unknown": "Thiết bị"
+  },
+  "blog": {
+    "title": "Từ blog",
+    "all": "Tất cả bài viết",
+    "close": "Đóng",
+    "openWeb": "Mở trên trang web",
+    "error": "Không tải được blog.",
+    "retry": "Thử lại",
+    "empty": "Chưa có bài viết nào.",
+    "missing": "Bài viết này không còn nữa.",
+    "englishOnly": "Bài viết này chưa có bằng ngôn ngữ của bạn, nên chúng tôi hiển thị bản tiếng Anh."
   },
   "pay": {
     "confirming": "Đang xác nhận thanh toán…",
@@ -69,13 +91,12 @@
     "done": "Pro có hiệu lực đến {date}",
     "doneNote": "Đăng nhập Doppler trên mọi thiết bị bằng ID tài khoản của bạn.",
     "invoiceExpired": "Hóa đơn này đã hết hạn. Đừng gửi gì đến địa chỉ này — hãy quay lại và bắt đầu thanh toán mới.",
-    "close":"Đóng"
+    "close": "Đóng"
   },
   "apps": {
     "eyebrow": "Có sẵn trên",
     "title": "Doppler VPN trên mọi thiết bị",
-    "directDownload": "Tải xuống trực tiếp",
-    "blog": "Đọc blog Doppler"
+    "directDownload": "Tải xuống trực tiếp"
   },
   "legal": {
     "privacy": "Chính sách bảo mật",

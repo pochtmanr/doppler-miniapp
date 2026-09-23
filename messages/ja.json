@@ -35,14 +35,15 @@
     "cryptoNote": "ネットワークで支払いが承認されると、Pro が自動で有効になります。",
     "back": "戻る",
     "noAccount": "@dopplercreatebot を開いて「開始」をタップしてから、このアプリを開き直してください。",
-    "openInTelegram": "このアプリは Telegram の Doppler VPN ボットから開いてください。"
+    "openInTelegram": "このアプリは Telegram の Doppler VPN ボットから開いてください。",
+    "extendHint": "現在の Pro に月数を追加",
+    "storeBilledShort": "App Store または Google Play で更新されます"
   },
   "account": {
     "pro": "Pro",
     "free": "無料",
     "activeUntil": "{date}まで有効",
     "daysLeft": "残り日数：{days}",
-    "devices": "デバイス：{used}/{max}",
     "expiredOn": "Pro は {date} に終了しました",
     "noSubscription": "有効なサブスクリプションはありません",
     "idHint": "Doppler の鍵です。どのデバイスでもこれでログインできます。",
@@ -54,6 +55,27 @@
     "storeWarning": "Pro は App Store または Google Play で自動更新されています。ここで支払うと期間が追加されますが、ストアの請求は続きます。先にストアの設定でサブスクリプションを解約してください。",
     "loading": "読み込み中…",
     "loadError": "アカウントを読み込めませんでした。"
+  },
+  "devices": {
+    "title": "デバイス",
+    "count": "{used} / {max}",
+    "main": "メイン",
+    "lastActive": "{when}にアクティブ",
+    "empty": "デバイスはまだありません。ID で Doppler アプリにサインインしてください。",
+    "hint": "デバイスの削除は Doppler アプリの「デバイス」画面から行えます。",
+    "browser": "ブラウザ",
+    "unknown": "デバイス"
+  },
+  "blog": {
+    "title": "ブログから",
+    "all": "すべての記事",
+    "close": "閉じる",
+    "openWeb": "ウェブサイトで開く",
+    "error": "ブログを読み込めませんでした。",
+    "retry": "再試行",
+    "empty": "まだ記事はありません。",
+    "missing": "この記事は公開を終了しました。",
+    "englishOnly": "この記事はまだお使いの言語に翻訳されていないため、英語で表示しています。"
   },
   "pay": {
     "confirming": "お支払いを確認しています…",
@@ -69,13 +91,12 @@
     "done": "Pro は {date} まで有効です",
     "doneNote": "アカウント ID で、どのデバイスからでも Doppler にログインできます。",
     "invoiceExpired": "この請求書は期限切れです。このアドレスには送金せず、戻って新しい支払いを開始してください。",
-    "close":"閉じる"
+    "close": "閉じる"
   },
   "apps": {
     "eyebrow": "対応プラットフォーム",
     "title": "あらゆるデバイスで Doppler VPN",
-    "directDownload": "直接ダウンロード",
-    "blog": "Doppler ブログを読む"
+    "directDownload": "直接ダウンロード"
   },
   "legal": {
     "privacy": "プライバシーポリシー",

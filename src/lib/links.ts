@@ -15,11 +15,6 @@ export const DOWNLOADS = {
 
 export type Platform = keyof typeof DOWNLOADS;
 
-/** The landing serves every Mini App locale; for the blog it redirects missing ones to /en itself. */
-export function blogUrl(lang: string): string {
-  return `${SITE}/${lang}/blog`;
-}
-
 /** The landing's legal pages are the only copy; the Mini App renders none of its own. */
 export function legalUrl(lang: string, page: 'privacy' | 'terms' | 'refund'): string {
   return `${SITE}/${lang}/${page}`;

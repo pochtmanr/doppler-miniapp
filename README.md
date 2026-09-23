@@ -22,9 +22,25 @@ active. It never trusts the payment popup alone. Buying while Pro is active exte
 doppler-web webhooks add the days on top of the current expiry.
 
 The account is always taken from `initData`, never from the `?account_id=` the bot adds to
-the URL. `/api/status` also returns the device count (`device_sessions`) and `max_devices`, so
-the app can show the account the way doppler-web's /account page does. No route accepts an
-Account ID: it is a login credential.
+the URL. `/api/status` also returns the device count (`device_sessions`) and `max_devices`, and
+with `{devices: true}` the device list (name, type, main, last active), so the app can show the
+account the way doppler-web's /account page does. No route accepts an Account ID: it is a
+login credential.
+
+What the home screen shows depends on the account:
+
+- **Pro:** the account, devices, downloads and the blog. A quiet "Extend Pro" row opens the
+  plans on a separate screen.
+- **Free or expired:** the plans come first.
+
+## Blog
+
+- The Mini App reads the blog's published posts from doppler-web's Supabase tables
+  (`blog_posts`, `blog_post_translations`) with the anon key. The routes are `GET /api/blog` and
+  `GET /api/blog/[slug]`, both public and cached at the edge.
+- Posts open in a full-screen reader inside the app.
+- Locales the blog doesn't have (uk, it, pl, nl, ro) get English, with a short note.
+- Links to other posts open in the reader, and other links open outside the app.
 
 ## Look and links
 

@@ -5,7 +5,11 @@ import { RTL_LOCALES, detectLanguage, getMessages } from '@/lib/i18n';
 import { DISPLAY_PLANS, type PlanId } from '@/lib/plans';
 import { legalUrl, openExternal } from '@/lib/links';
 import { AccountCard, formatDate, type AccountStatus } from '@/components/account-card';
+import { BlogReader } from '@/components/blog-reader';
+import { BlogSection } from '@/components/blog-section';
+import { DevicesCard } from '@/components/devices-card';
 import { Downloads } from '@/components/downloads';
+import { useBlogList } from '@/lib/blog-client';
 import { BTN_FLAT, BTN_PRIMARY, CARD, CARD_HAIRLINE, EYEBROW, ICON_TILE, INPUT } from '@/components/ui/recipes';
 
 const PLANS = DISPLAY_PLANS.map((p) => {
@@ -43,6 +47,9 @@ type Method = 'card' | 'crypto';
 type Load = 'loading' | 'ready' | 'none' | 'outside' | 'error';
 /** shop → (card) confirming → done | slow;  shop → invoice → (crypto) confirming → done | slow */
 type Phase = 'shop' | 'invoice' | 'confirming' | 'slow' | 'done';
+/** Pro users land on `home`; the plans live on their own `extend` screen. Everyone else sees the plans on home. */
+type View = 'home' | 'extend';
+type Reader = { kind: 'list' } | { kind: 'post'; slug: string } | null;
 type Promo = { code: string; discount_percent: number; promo_id: string };
 type CryptoInvoice = {
   address: string;
@@ -108,6 +115,8 @@ export default function Home() {
   const [promoLoading, setPromoLoading] = useState(false);
 
   const [phase, setPhase] = useState<Phase>('shop');
+  const [view, setView] = useState<View>('home');
+  const [reader, setReader] = useState<Reader>(null);
   const [paidWith, setPaidWith] = useState<Method>('card');
   const [invoice, setInvoice] = useState<CryptoInvoice | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
@@ -120,8 +129,8 @@ export default function Home() {
   const p = messages.pay;
 
   /** The account, from signed initData only. Never from the ?account_id= the bot appends. */
-  const fetchStatus = useCallback(async (): Promise<AccountStatus | null> => {
-    const { ok, data } = await post('/api/status', {});
+  const fetchStatus = useCallback(async (withDevices = false): Promise<AccountStatus | null> => {
+    const { ok, data } = await post('/api/status', withDevices ? { devices: true } : {});
     if (!ok) throw new Error('status');
     return data.accountId ? (data as AccountStatus) : null;
   }, []);
@@ -144,7 +153,7 @@ export default function Home() {
       setLoad('outside');
       return;
     }
-    fetchStatus()
+    fetchStatus(true)
       .then((s) => {
         setStatus(s);
         setLoad(s ? 'ready' : 'none');
@@ -155,7 +164,25 @@ export default function Home() {
   // Each phase is a new screen; don't leave the user scrolled into the middle of it.
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [phase]);
+  }, [phase, view]);
+
+  // Telegram's header back arrow: Extend → home. The reader registers its own while open.
+  useEffect(() => {
+    const tg = window.Telegram?.WebApp;
+    if (!tg?.BackButton || !tg.isVersionAtLeast?.('6.1') || reader) return;
+    if (view !== 'extend' || phase !== 'shop') {
+      tg.BackButton.hide();
+      return;
+    }
+    const toHome = () => setView('home');
+    tg.BackButton.onClick(toHome);
+    tg.BackButton.show();
+    return () => {
+      tg.BackButton.offClick(toHome);
+    };
+  }, [view, phase, reader]);
+
+  const blog = useBlogList(lang, load === 'ready');
 
   // After a payment: wait for doppler-web's webhook to move the expiry. The page never
   // claims success on the payment provider's word alone.
@@ -174,7 +201,8 @@ export default function Home() {
         const s = await fetchStatus();
         if (stopped) return;
         if (s && expiryMs(s) > baseline.current) {
-          setStatus(s);
+          setStatus((prev) => ({ ...s, devices: prev?.devices }));
+          setView('home');
           setPhase('done');
           return;
         }
@@ -463,208 +491,281 @@ export default function Home() {
     );
   }
 
-  // ── Shop: account + plans ────────────────────────────────────────────────────
+  // ── Home / Extend ─────────────────────────────────────────────────────────────
   const expired = !status.isActive && !!status.expiresAt;
   const plansTitle = status.isActive ? a.extendPro : expired ? a.renewPro : a.getPro;
   const cta = status.isActive ? a.extendPro : expired ? a.renewPro : m.subscribe;
   const storeBilled = status.isActive && !!status.store && STORE_BILLED.includes(status.store);
   const account = <AccountCard status={status} lang={lang} messages={messages} />;
+  const devices = status.devices ? (
+    <DevicesCard devices={status.devices} maxDevices={status.maxDevices} lang={lang} messages={messages} />
+  ) : null;
+  const blogSection = (
+    <BlogSection
+      blog={blog}
+      lang={lang}
+      messages={messages}
+      onOpenPost={(slug) => setReader({ kind: 'post', slug })}
+      onOpenList={() => setReader({ kind: 'list' })}
+    />
+  );
+  const readerView = reader && (
+    <BlogReader key={JSON.stringify(reader)} start={reader} lang={lang} messages={messages} onClose={() => setReader(null)} />
+  );
 
-  return shell(
-    <>
-      {hero}
-
-      {(status.isActive || expired) && <div className="mb-8">{account}</div>}
-
-      <section aria-labelledby="plans-title">
-        <h2 id="plans-title" className="text-xl font-semibold text-text-primary">{plansTitle}</h2>
-        {status.isActive && <p className="mt-1 text-sm text-text-muted">{a.extendNote}</p>}
-        {storeBilled && (
-          <p className="mt-3 rounded-xl border border-accent-amber/30 bg-accent-amber/10 px-4 py-3 text-sm text-text-primary">
-            {a.storeWarning}
-          </p>
-        )}
-
-        <div className="mt-4 space-y-3" role="radiogroup" aria-labelledby="plans-title">
-          {PLANS.map((plan) => {
-            const isSelected = selected === plan.id;
-            const final = discounted(plan.cents);
-            return (
-              <button
-                key={plan.id}
-                type="button"
-                role="radio"
-                aria-checked={isSelected}
-                onClick={() => selectPlan(plan.id)}
-                className={`relative w-full rounded-xl border p-4 text-start transition-colors ${
-                  isSelected
-                    ? 'border-accent-teal bg-accent-teal/10 ring-1 ring-accent-teal/40'
-                    : 'border-overlay/15 bg-bg-primary/40 hover:border-accent-teal/40'
-                }`}
-              >
-                {plan.best && (
-                  <span className="absolute -top-2.5 end-4 inline-flex items-center px-2.5 py-0.5 rounded-full bg-accent-teal text-[10px] font-bold uppercase tracking-wider text-white">
-                    {m.bestValue}
+  const plans = (
+    <section aria-labelledby="plans-title">
+      <h2 id="plans-title" className="text-xl font-semibold text-text-primary">{plansTitle}</h2>
+      {status.isActive && <p className="mt-1 text-sm text-text-muted">{a.extendNote}</p>}
+      {expired && (
+        <p className="mt-1 text-sm font-medium text-accent-amber">
+          {a.expiredOn.replace('{date}', formatDate(status.expiresAt!, lang))}
+        </p>
+      )}
+      {storeBilled && (
+        <p className="mt-3 rounded-xl border border-accent-amber/30 bg-accent-amber/10 px-4 py-3 text-sm text-text-primary">
+          {a.storeWarning}
+        </p>
+      )}
+      <div className="mt-4 space-y-3" role="radiogroup" aria-labelledby="plans-title">
+        {PLANS.map((plan) => {
+          const isSelected = selected === plan.id;
+          const final = discounted(plan.cents);
+          return (
+            <button
+              key={plan.id}
+              type="button"
+              role="radio"
+              aria-checked={isSelected}
+              onClick={() => selectPlan(plan.id)}
+              className={`relative w-full rounded-xl border p-4 text-start transition-colors ${
+                isSelected
+                  ? 'border-accent-teal bg-accent-teal/10 ring-1 ring-accent-teal/40'
+                  : 'border-overlay/15 bg-bg-primary/40 hover:border-accent-teal/40'
+              }`}
+            >
+              {plan.best && (
+                <span className="absolute -top-2.5 end-4 inline-flex items-center px-2.5 py-0.5 rounded-full bg-accent-teal text-[10px] font-bold uppercase tracking-wider text-white">
+                  {m.bestValue}
+                </span>
+              )}
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-3">
+                  <span
+                    className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                      isSelected ? 'border-accent-teal bg-accent-teal' : 'border-overlay/30'
+                    }`}
+                  >
+                    {isSelected && <span className="w-2 h-2 rounded-full bg-white" />}
                   </span>
-                )}
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected ? 'border-accent-teal bg-accent-teal' : 'border-overlay/30'
-                      }`}
-                    >
-                      {isSelected && <span className="w-2 h-2 rounded-full bg-white" />}
-                    </span>
-                    <span>
-                      <span className="flex items-center gap-2">
-                        <span className="text-sm font-semibold text-text-primary">{planLabel(plan.id)}</span>
-                        {plan.save && (
-                          <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-accent-teal/15 text-accent-teal text-[10px] font-bold">
-                            {m.save} {plan.save}
-                          </span>
-                        )}
-                      </span>
-                      {plan.months > 1 && (
-                        <span className="block text-xs text-text-muted">
-                          {formatCents(Math.round(final / plan.months))}
-                          {m.perMonth}
+                  <span>
+                    <span className="flex items-center gap-2">
+                      <span className="text-sm font-semibold text-text-primary">{planLabel(plan.id)}</span>
+                      {plan.save && (
+                        <span className="inline-flex items-center px-1.5 py-0.5 rounded bg-accent-teal/15 text-accent-teal text-[10px] font-bold">
+                          {m.save} {plan.save}
                         </span>
                       )}
                     </span>
-                  </div>
-                  <div className="text-end">
-                    {promoApplied && final !== plan.cents ? (
-                      <span className="flex items-center gap-2">
-                        <span className="text-xs text-text-muted line-through">{formatCents(plan.cents)}</span>
-                        <span className="text-lg font-bold text-text-primary">{formatCents(final)}</span>
+                    {plan.months > 1 && (
+                      <span className="block text-xs text-text-muted">
+                        {formatCents(Math.round(final / plan.months))}
+                        {m.perMonth}
                       </span>
-                    ) : (
-                      <span className="text-lg font-bold text-text-primary">{formatCents(plan.cents)}</span>
                     )}
-                  </div>
+                  </span>
                 </div>
-              </button>
-            );
-          })}
-        </div>
+                <div className="text-end">
+                  {promoApplied && final !== plan.cents ? (
+                    <span className="flex items-center gap-2">
+                      <span className="text-xs text-text-muted line-through">{formatCents(plan.cents)}</span>
+                      <span className="text-lg font-bold text-text-primary">{formatCents(final)}</span>
+                    </span>
+                  ) : (
+                    <span className="text-lg font-bold text-text-primary">{formatCents(plan.cents)}</span>
+                  )}
+                </div>
+              </div>
+            </button>
+          );
+        })}
+      </div>
 
-        {/* Promo code */}
-        <div className="mt-5">
-          {promoApplied ? (
-            <div className="flex items-center justify-between rounded-xl border border-accent-teal/25 bg-accent-teal/10 px-4 py-3">
-              <span className="flex items-center gap-2 text-sm text-text-primary">
-                <CheckIcon className="w-4 h-4 text-accent-teal" />
-                <span>
-                  <span className="font-semibold">{promoApplied.code}</span> — {promoApplied.discount_percent}% {m.promoOff}
-                </span>
+      {/* Promo code */}
+      <div className="mt-5">
+        {promoApplied ? (
+          <div className="flex items-center justify-between rounded-xl border border-accent-teal/25 bg-accent-teal/10 px-4 py-3">
+            <span className="flex items-center gap-2 text-sm text-text-primary">
+              <CheckIcon className="w-4 h-4 text-accent-teal" />
+              <span>
+                <span className="font-semibold">{promoApplied.code}</span> — {promoApplied.discount_percent}% {m.promoOff}
               </span>
+            </span>
+            <button
+              type="button"
+              onClick={() => {
+                setPromoApplied(null);
+                setPromoCode('');
+              }}
+              className="text-text-muted text-sm hover:text-danger"
+              aria-label="✕"
+            >
+              ✕
+            </button>
+          </div>
+        ) : (
+          <>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                value={promoCode}
+                onChange={(e) => {
+                  setPromoCode(e.target.value.toUpperCase());
+                  setPromoError('');
+                }}
+                placeholder={m.promoPlaceholder}
+                className={`${INPUT} flex-1`}
+              />
               <button
                 type="button"
-                onClick={() => {
-                  setPromoApplied(null);
-                  setPromoCode('');
-                }}
-                className="text-text-muted text-sm hover:text-danger"
-                aria-label="✕"
+                onClick={() => validatePromo(promoCode.trim(), selected)}
+                disabled={promoLoading || !promoCode.trim()}
+                className={BTN_FLAT}
               >
-                ✕
+                {promoLoading ? '…' : m.apply}
               </button>
             </div>
-          ) : (
-            <>
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  value={promoCode}
-                  onChange={(e) => {
-                    setPromoCode(e.target.value.toUpperCase());
-                    setPromoError('');
-                  }}
-                  placeholder={m.promoPlaceholder}
-                  className={`${INPUT} flex-1`}
-                />
-                <button
-                  type="button"
-                  onClick={() => validatePromo(promoCode.trim(), selected)}
-                  disabled={promoLoading || !promoCode.trim()}
-                  className={BTN_FLAT}
-                >
-                  {promoLoading ? '…' : m.apply}
-                </button>
-              </div>
-              {promoError && <p className="text-danger text-xs mt-1 ps-1">{promoError}</p>}
-            </>
-          )}
-        </div>
+            {promoError && <p className="text-danger text-xs mt-1 ps-1">{promoError}</p>}
+          </>
+        )}
+      </div>
 
-        {/* Payment method */}
-        <div className="mt-5">
-          <div className={`${EYEBROW} mb-2`}>{m.payWith}</div>
-          <div className="grid grid-cols-2 gap-2 p-1 rounded-xl bg-bg-primary/40 border border-overlay/15" role="radiogroup">
-            {(['card', 'crypto'] as const).map((id) => (
+      {/* Payment method */}
+      <div className="mt-5">
+        <div className={`${EYEBROW} mb-2`}>{m.payWith}</div>
+        <div className="grid grid-cols-2 gap-2 p-1 rounded-xl bg-bg-primary/40 border border-overlay/15" role="radiogroup">
+          {(['card', 'crypto'] as const).map((id) => (
+            <button
+              key={id}
+              type="button"
+              role="radio"
+              aria-checked={method === id}
+              onClick={() => setMethod(id)}
+              className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors ${
+                method === id ? 'bg-accent-teal text-white' : 'text-text-primary hover:bg-overlay/5'
+              }`}
+            >
+              {id === 'card' ? m.card : m.crypto}
+            </button>
+          ))}
+        </div>
+        {method === 'crypto' && (
+          <div className="flex flex-wrap gap-2 mt-3">
+            {COINS.map((c) => (
               <button
-                key={id}
+                key={c.id}
                 type="button"
-                role="radio"
-                aria-checked={method === id}
-                onClick={() => setMethod(id)}
-                className={`rounded-lg px-3 py-2.5 text-sm font-semibold transition-colors ${
-                  method === id ? 'bg-accent-teal text-white' : 'text-text-primary hover:bg-overlay/5'
+                onClick={() => setCoin(c.id)}
+                className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
+                  coin === c.id
+                    ? 'border-accent-teal/40 bg-accent-teal/10 text-accent-teal'
+                    : 'border-overlay/10 text-text-muted'
                 }`}
               >
-                {id === 'card' ? m.card : m.crypto}
+                {c.label}
               </button>
             ))}
           </div>
-          {method === 'crypto' && (
-            <div className="flex flex-wrap gap-2 mt-3">
-              {COINS.map((c) => (
-                <button
-                  key={c.id}
-                  type="button"
-                  onClick={() => setCoin(c.id)}
-                  className={`rounded-full border px-3 py-1 text-xs font-medium transition-colors ${
-                    coin === c.id
-                      ? 'border-accent-teal/40 bg-accent-teal/10 text-accent-teal'
-                      : 'border-overlay/10 text-text-muted'
-                  }`}
-                >
-                  {c.label}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        <button type="button" onClick={handleSubscribe} disabled={loading} className={`${BTN_PRIMARY} mt-6 w-full`}>
-          {loading ? m.processing : `${cta} · ${formatCents(discounted(PLANS.find((pl) => pl.id === selected)!.cents))}`}
-        </button>
-        {error && <p className="text-danger text-sm text-center mt-3">{error}</p>}
-      </section>
-
-      {!status.isActive && !expired && <div className="mt-8">{account}</div>}
-
-      {/* What you get — the landing paywall's feature list, in card recipe B */}
-      <div className={`${CARD} mt-8 p-5`}>
-        <span className={CARD_HAIRLINE} aria-hidden="true" />
-        <div className="relative">
-          <h2 className={`${EYEBROW} mb-4`}>{m.features}</h2>
-          <ul className="space-y-3">
-            {[m.feat1, m.feat2, m.feat3, m.feat4, m.feat5].map((feat) => (
-              <li key={feat} className="flex items-center gap-3 text-sm text-text-primary">
-                <span className={ICON_TILE}>
-                  <CheckIcon />
-                </span>
-                {feat}
-              </li>
-            ))}
-          </ul>
-        </div>
+        )}
       </div>
 
+      <button type="button" onClick={handleSubscribe} disabled={loading} className={`${BTN_PRIMARY} mt-6 w-full`}>
+        {loading ? m.processing : `${cta} · ${formatCents(discounted(PLANS.find((pl) => pl.id === selected)!.cents))}`}
+      </button>
+      {error && <p className="text-danger text-sm text-center mt-3">{error}</p>}
+    </section>
+  );
+
+  // What you get — the landing paywall's feature list, in card recipe B. Only for people deciding to buy.
+  const benefits = (
+    <div className={`${CARD} mt-8 p-5`}>
+      <span className={CARD_HAIRLINE} aria-hidden="true" />
+      <div className="relative">
+        <h2 className={`${EYEBROW} mb-4`}>{m.features}</h2>
+        <ul className="space-y-3">
+          {[m.feat1, m.feat2, m.feat3, m.feat4, m.feat5].map((feat) => (
+            <li key={feat} className="flex items-center gap-3 text-sm text-text-primary">
+              <span className={ICON_TILE}>
+                <CheckIcon />
+              </span>
+              {feat}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+
+  // Pro: its own quiet screen for adding time, reached from the home row.
+  if (status.isActive && view === 'extend') {
+    return shell(
+      <>
+        <button
+          type="button"
+          onClick={() => setView('home')}
+          className="mb-6 flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text-primary transition-colors"
+        >
+          <svg className="w-4 h-4 rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          {m.back}
+        </button>
+        {plans}
+        {footer}
+      </>,
+    );
+  }
+
+  // Pro: the account first. No key on this screen; extending is a quiet row.
+  if (status.isActive) {
+    return shell(
+      <>
+        {hero}
+        {account}
+        <button
+          type="button"
+          onClick={() => setView('extend')}
+          className="mt-3 flex w-full items-center justify-between gap-3 rounded-xl border border-overlay/10 bg-bg-secondary/20 px-4 py-3.5 text-start hover:border-accent-teal/30 transition-colors"
+        >
+          <span className="min-w-0">
+            <span className="block text-sm font-medium text-text-primary">{a.extendPro}</span>
+            <span className="block text-xs text-text-tertiary">{storeBilled ? m.storeBilledShort : m.extendHint}</span>
+          </span>
+          <svg className="w-4 h-4 shrink-0 text-text-tertiary rtl:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} aria-hidden="true">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+        {devices && <div className="mt-8">{devices}</div>}
+        <Downloads lang={lang} messages={messages} />
+        {blogSection}
+        {footer}
+        {readerView}
+      </>,
+    );
+  }
+
+  // Free or expired: the paywall first, then everything else.
+  return shell(
+    <>
+      {hero}
+      {plans}
+      {benefits}
+      <div className="mt-8">{account}</div>
+      {devices && <div className="mt-3">{devices}</div>}
       <Downloads lang={lang} messages={messages} />
+      {blogSection}
       {footer}
+      {readerView}
     </>,
   );
 }
