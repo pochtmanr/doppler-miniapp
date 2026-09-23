@@ -17,8 +17,25 @@ promo codes, and starts a payment. It takes no payments itself: everything goes 
 5. doppler-web's Revolut and OxaPay webhooks grant Pro and redeem the promo. The Mini App has
    no webhook.
 
+After a payment the app polls `/api/status` until the expiry moves, and only then says Pro is
+active. It never trusts the payment popup alone. Buying while Pro is active extends it: the
+doppler-web webhooks add the days on top of the current expiry.
+
 The account is always taken from `initData`, never from the `?account_id=` the bot adds to
-the URL.
+the URL. `/api/status` also returns the device count (`device_sessions`) and `max_devices`, so
+the app can show the account the way doppler-web's /account page does. No route accepts an
+Account ID: it is a login credential.
+
+## Look and links
+
+- **Design:** the Mini App follows doppler-web's `DESIGN.md` ("Glyph Terminal"). The tokens
+  and CTA styles in `globals.css` and the class lists in `components/ui/recipes.ts` are copied
+  from there, so change the landing first and then copy.
+- **Theme:** light or dark follows Telegram's `colorScheme`.
+- **Legal:** privacy, terms and refund exist only on the landing. `/privacy` and `/terms`
+  redirect there.
+- **External links:** in-app links go through `openExternal()` (`src/lib/links.ts`), which
+  uses `Telegram.WebApp.openLink`. A plain link would replace the Mini App.
 
 ## Deployment
 

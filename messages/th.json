@@ -14,7 +14,7 @@
     "feat2": "แบนด์วิดท์ไม่จำกัด",
     "feat3": "ไม่มีโฆษณา",
     "feat4": "การสนับสนุนแบบพิเศษ",
-    "feat5": "สูงสุด 5 อุปกรณ์",
+    "feat5": "สูงสุด 10 อุปกรณ์",
     "processing": "กำลังดำเนินการ...",
     "error": "เกิดข้อผิดพลาด",
     "account": "บัญชี",
@@ -37,21 +37,49 @@
     "noAccount": "เปิด @dopplercreatebot แล้วแตะเริ่ม จากนั้นเปิดแอปนี้อีกครั้ง",
     "openInTelegram": "เปิดแอปนี้จากบอท Doppler VPN ใน Telegram"
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "ฟรี",
+    "activeUntil": "ใช้งานได้ถึง {date}",
+    "daysLeft": "จำนวนวันที่เหลือ: {days}",
+    "devices": "อุปกรณ์: {used} จาก {max}",
+    "expiredOn": "Pro ของคุณหมดอายุเมื่อ {date}",
+    "noSubscription": "ไม่มีการสมัครสมาชิกที่ใช้งานอยู่",
+    "idHint": "นี่คือกุญแจ Doppler ของคุณ ใช้เข้าสู่ระบบได้บนทุกอุปกรณ์",
+    "copyId": "คัดลอก ID",
+    "getPro": "รับ Pro",
+    "extendPro": "ต่ออายุ Pro",
+    "extendNote": "ระยะเวลาจะถูกเพิ่มต่อจาก Pro ปัจจุบันของคุณ",
+    "renewPro": "เปิดใช้ Pro อีกครั้ง",
+    "storeWarning": "Pro ของคุณต่ออายุผ่าน App Store หรือ Google Play การชำระเงินที่นี่จะเพิ่มระยะเวลา แต่สโตร์จะยังคงเรียกเก็บเงินต่อไป โปรดยกเลิกการสมัครในการตั้งค่าของสโตร์ก่อน",
+    "loading": "กำลังโหลด…",
+    "loadError": "ไม่สามารถโหลดบัญชีของคุณได้"
   },
-  "success": {
-    "title": "ชำระเงินสำเร็จ!",
-    "description": "การสมัครสมาชิกของคุณเปิดใช้งานแล้ว",
-    "close": "ปิด"
+  "pay": {
+    "confirming": "กำลังยืนยันการชำระเงิน…",
+    "confirmingNote": "โดยปกติใช้เวลาไม่กี่วินาที",
+    "paidCrypto": "ชำระเงินแล้ว",
+    "waitingNetwork": "กำลังรอการยืนยันจากเครือข่าย…",
+    "waitingNetworkNote": "Pro จะเปิดใช้งานอัตโนมัติเมื่อเครือข่ายยืนยันการชำระเงิน อาจใช้เวลาสักครู่ คุณปิดแอปได้",
+    "slowCard": "การชำระเงินของคุณยังอยู่ระหว่างการยืนยัน",
+    "slowCardNote": "โดยปกติใช้เวลาหนึ่งถึงสองนาที Pro จะเปิดใช้งานอัตโนมัติ",
+    "slowCrypto": "ยังไม่ได้รับการยืนยัน",
+    "slowCryptoNote": "หากคุณส่งการชำระเงินแล้ว Pro จะเปิดใช้งานอัตโนมัติเมื่อเครือข่ายยืนยัน",
+    "refresh": "ตรวจสอบอีกครั้ง",
+    "done": "Pro ใช้งานได้ถึง {date}",
+    "doneNote": "เข้าสู่ระบบ Doppler บนอุปกรณ์ใดก็ได้ด้วย ID บัญชีของคุณ",
+    "invoiceExpired": "ใบแจ้งหนี้นี้หมดอายุแล้ว อย่าส่งเงินไปยังที่อยู่นี้ โปรดย้อนกลับและเริ่มการชำระเงินใหม่",
+    "close":"ปิด"
+  },
+  "apps": {
+    "eyebrow": "ใช้งานได้บน",
+    "title": "Doppler VPN ทุกอุปกรณ์",
+    "directDownload": "ดาวน์โหลดโดยตรง",
+    "blog": "อ่านบล็อก Doppler"
+  },
+  "legal": {
+    "privacy": "นโยบายความเป็นส่วนตัว",
+    "terms": "เงื่อนไขการใช้บริการ",
+    "refund": "นโยบายการคืนเงิน"
   }
 }

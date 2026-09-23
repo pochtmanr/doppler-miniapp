@@ -14,7 +14,7 @@
     "feat2": "Ancho de banda ilimitado",
     "feat3": "Sin anuncios",
     "feat4": "Soporte prioritario",
-    "feat5": "Hasta 5 dispositivos",
+    "feat5": "Hasta 10 dispositivos",
     "processing": "Procesando...",
     "error": "Algo salió mal",
     "account": "Cuenta",
@@ -37,21 +37,49 @@
     "noAccount": "Abre @dopplercreatebot y toca Iniciar, luego vuelve a abrir esta app.",
     "openInTelegram": "Abre esta app desde el bot de Doppler VPN en Telegram."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "Gratis",
+    "activeUntil": "Activo hasta el {date}",
+    "daysLeft": "Días restantes: {days}",
+    "devices": "Dispositivos: {used} de {max}",
+    "expiredOn": "Tu Pro expiró el {date}",
+    "noSubscription": "Sin suscripción activa",
+    "idHint": "Tu clave de Doppler. Inicia sesión con ella en cualquier dispositivo.",
+    "copyId": "Copiar ID",
+    "getPro": "Obtener Pro",
+    "extendPro": "Extender Pro",
+    "extendNote": "El tiempo se suma a tu Pro actual.",
+    "renewPro": "Renovar Pro",
+    "storeWarning": "Tu Pro se renueva a través de App Store o Google Play. Pagar aquí añade tiempo, pero la tienda seguirá cobrándote. Cancela primero la suscripción en los ajustes de la tienda.",
+    "loading": "Cargando…",
+    "loadError": "No se pudo cargar tu cuenta."
   },
-  "success": {
-    "title": "¡Pago exitoso!",
-    "description": "Tu suscripción Doppler VPN Pro está activa.",
-    "close": "Cerrar"
+  "pay": {
+    "confirming": "Confirmando tu pago…",
+    "confirmingNote": "Suele tardar unos segundos.",
+    "paidCrypto": "Ya he pagado",
+    "waitingNetwork": "Esperando la confirmación de la red…",
+    "waitingNetworkNote": "Pro se activa automáticamente cuando la red confirma tu pago. Puede tardar un rato; puedes cerrar la app.",
+    "slowCard": "Tu pago aún se está confirmando.",
+    "slowCardNote": "Suele tardar uno o dos minutos. Pro se activa automáticamente.",
+    "slowCrypto": "Aún no hay confirmación.",
+    "slowCryptoNote": "Si ya enviaste el pago, Pro se activará automáticamente cuando la red lo confirme.",
+    "refresh": "Comprobar de nuevo",
+    "done": "Pro activo hasta el {date}",
+    "doneNote": "Inicia sesión en Doppler en cualquier dispositivo con tu ID de cuenta.",
+    "invoiceExpired": "Esta factura ha caducado. No envíes nada a ella: vuelve atrás e inicia un nuevo pago.",
+    "close":"Cerrar"
+  },
+  "apps": {
+    "eyebrow": "Disponible en",
+    "title": "Doppler VPN en todos tus dispositivos",
+    "directDownload": "Descarga directa",
+    "blog": "Leer el blog de Doppler"
+  },
+  "legal": {
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio",
+    "refund": "Política de reembolso"
   }
 }

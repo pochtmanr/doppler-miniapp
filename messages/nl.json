@@ -14,7 +14,7 @@
     "feat2": "Onbeperkte bandbreedte",
     "feat3": "Geen advertenties",
     "feat4": "Prioriteit ondersteuning",
-    "feat5": "Tot 5 apparaten",
+    "feat5": "Tot 10 apparaten",
     "processing": "Verwerken...",
     "error": "Er ging iets mis",
     "account": "Account",
@@ -37,21 +37,49 @@
     "noAccount": "Open @dopplercreatebot en tik op Start, open daarna deze app opnieuw.",
     "openInTelegram": "Open deze app via de Doppler VPN-bot in Telegram."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "Gratis",
+    "activeUntil": "Actief tot {date}",
+    "daysLeft": "Dagen over: {days}",
+    "devices": "Apparaten: {used} van {max}",
+    "expiredOn": "Je Pro is verlopen op {date}",
+    "noSubscription": "Geen actief abonnement",
+    "idHint": "Je sleutel tot Doppler. Log hiermee in op elk apparaat.",
+    "copyId": "ID kopiëren",
+    "getPro": "Pro nemen",
+    "extendPro": "Pro verlengen",
+    "extendNote": "De tijd komt bovenop je huidige Pro.",
+    "renewPro": "Pro vernieuwen",
+    "storeWarning": "Je Pro wordt verlengd via de App Store of Google Play. Hier betalen voegt tijd toe, maar de store blijft kosten in rekening brengen. Zeg het abonnement eerst op in de instellingen van de store.",
+    "loading": "Laden…",
+    "loadError": "Je account kon niet worden geladen."
   },
-  "success": {
-    "title": "Betaling geslaagd!",
-    "description": "Je abonnement is actief.",
-    "close": "Sluiten"
+  "pay": {
+    "confirming": "Je betaling wordt bevestigd…",
+    "confirmingNote": "Dit duurt meestal een paar seconden.",
+    "paidCrypto": "Ik heb betaald",
+    "waitingNetwork": "Wachten op bevestiging van het netwerk…",
+    "waitingNetworkNote": "Pro wordt automatisch geactiveerd zodra het netwerk je betaling bevestigt. Dit kan even duren; je kunt de app sluiten.",
+    "slowCard": "Je betaling wordt nog bevestigd.",
+    "slowCardNote": "Dit duurt meestal een à twee minuten. Pro wordt automatisch geactiveerd.",
+    "slowCrypto": "Nog geen bevestiging.",
+    "slowCryptoNote": "Als je de betaling hebt verstuurd, wordt Pro automatisch geactiveerd zodra het netwerk die bevestigt.",
+    "refresh": "Opnieuw controleren",
+    "done": "Pro actief tot {date}",
+    "doneNote": "Log op elk apparaat in bij Doppler met je account-ID.",
+    "invoiceExpired": "Deze factuur is verlopen. Stuur er niets meer naartoe — ga terug en start een nieuwe betaling.",
+    "close":"Sluiten"
+  },
+  "apps": {
+    "eyebrow": "Beschikbaar op",
+    "title": "Doppler VPN op elk apparaat",
+    "directDownload": "Directe download",
+    "blog": "Lees de Doppler-blog"
+  },
+  "legal": {
+    "privacy": "Privacybeleid",
+    "terms": "Algemene voorwaarden",
+    "refund": "Terugbetalingsbeleid"
   }
 }

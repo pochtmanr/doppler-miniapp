@@ -14,7 +14,7 @@
     "feat2": "Sınırsız bant genişliği",
     "feat3": "Reklam yok",
     "feat4": "Öncelikli destek",
-    "feat5": "5 cihaza kadar",
+    "feat5": "10 cihaza kadar",
     "processing": "İşleniyor...",
     "error": "Bir şeyler yanlış gitti",
     "account": "Hesap",
@@ -37,21 +37,49 @@
     "noAccount": "@dopplercreatebot'u açıp Başlat'a dokunun, ardından bu uygulamayı yeniden açın.",
     "openInTelegram": "Bu uygulamayı Telegram'daki Doppler VPN botundan açın."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "Ücretsiz",
+    "activeUntil": "{date} tarihine kadar aktif",
+    "daysLeft": "Kalan gün: {days}",
+    "devices": "Cihazlar: {used}/{max}",
+    "expiredOn": "Pro aboneliğiniz {date} tarihinde sona erdi",
+    "noSubscription": "Aktif abonelik yok",
+    "idHint": "Doppler anahtarınız. Her cihazda bununla giriş yapın.",
+    "copyId": "ID'yi kopyala",
+    "getPro": "Pro al",
+    "extendPro": "Pro'yu uzat",
+    "extendNote": "Süre mevcut Pro'nuza eklenir.",
+    "renewPro": "Pro'yu yenile",
+    "storeWarning": "Pro aboneliğiniz App Store veya Google Play üzerinden yenileniyor. Burada ödeme yapmak süre ekler, ancak mağaza ücret almaya devam eder. Önce mağaza ayarlarından aboneliği iptal edin.",
+    "loading": "Yükleniyor…",
+    "loadError": "Hesabınız yüklenemedi."
   },
-  "success": {
-    "title": "Ödeme başarılı!",
-    "description": "Aboneliğiniz aktif.",
-    "close": "Kapat"
+  "pay": {
+    "confirming": "Ödemeniz onaylanıyor…",
+    "confirmingNote": "Bu genellikle birkaç saniye sürer.",
+    "paidCrypto": "Ödeme yaptım",
+    "waitingNetwork": "Ağ onayı bekleniyor…",
+    "waitingNetworkNote": "Ağ ödemenizi onayladığında Pro otomatik olarak açılır. Bu biraz sürebilir; uygulamayı kapatabilirsiniz.",
+    "slowCard": "Ödemeniz hâlâ onaylanıyor.",
+    "slowCardNote": "Bu genellikle bir iki dakika sürer. Pro otomatik olarak açılır.",
+    "slowCrypto": "Henüz onay yok.",
+    "slowCryptoNote": "Ödemeyi gönderdiyseniz, ağ onayladığında Pro otomatik olarak açılır.",
+    "refresh": "Tekrar kontrol et",
+    "done": "Pro {date} tarihine kadar aktif",
+    "doneNote": "Hesap ID'nizle herhangi bir cihazda Doppler'e giriş yapın.",
+    "invoiceExpired": "Bu faturanın süresi doldu. Bu adrese hiçbir şey göndermeyin — geri dönüp yeni bir ödeme başlatın.",
+    "close":"Kapat"
+  },
+  "apps": {
+    "eyebrow": "Mevcut platformlar",
+    "title": "Her cihazda Doppler VPN",
+    "directDownload": "Doğrudan indirme",
+    "blog": "Doppler blogunu okuyun"
+  },
+  "legal": {
+    "privacy": "Gizlilik Politikası",
+    "terms": "Hizmet Koşulları",
+    "refund": "İade Politikası"
   }
 }

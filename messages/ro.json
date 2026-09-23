@@ -14,7 +14,7 @@
     "feat2": "Lățime de bandă nelimitată",
     "feat3": "Fără reclame",
     "feat4": "Suport prioritar",
-    "feat5": "Până la 5 dispozitive",
+    "feat5": "Până la 10 dispozitive",
     "processing": "Se procesează...",
     "error": "Ceva a mers prost",
     "account": "Cont",
@@ -37,21 +37,49 @@
     "noAccount": "Deschide @dopplercreatebot și apasă Start, apoi redeschide această aplicație.",
     "openInTelegram": "Deschide această aplicație din botul Doppler VPN din Telegram."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "Gratuit",
+    "activeUntil": "Activ până la {date}",
+    "daysLeft": "Zile rămase: {days}",
+    "devices": "Dispozitive: {used} din {max}",
+    "expiredOn": "Pro a expirat pe {date}",
+    "noSubscription": "Niciun abonament activ",
+    "idHint": "Cheia ta pentru Doppler. Conectează-te cu ea pe orice dispozitiv.",
+    "copyId": "Copiază ID-ul",
+    "getPro": "Obține Pro",
+    "extendPro": "Prelungește Pro",
+    "extendNote": "Timpul se adaugă la abonamentul Pro actual.",
+    "renewPro": "Reînnoiește Pro",
+    "storeWarning": "Abonamentul tău Pro se reînnoiește prin App Store sau Google Play. Plata de aici adaugă timp, dar magazinul va continua să te taxeze. Anulează mai întâi abonamentul din setările magazinului.",
+    "loading": "Se încarcă…",
+    "loadError": "Contul nu a putut fi încărcat."
   },
-  "success": {
-    "title": "Plată reușită!",
-    "description": "Abonamentul tău este activ.",
-    "close": "Închide"
+  "pay": {
+    "confirming": "Confirmăm plata…",
+    "confirmingNote": "De obicei durează câteva secunde.",
+    "paidCrypto": "Am plătit",
+    "waitingNetwork": "Așteptăm confirmarea rețelei…",
+    "waitingNetworkNote": "Pro se activează automat după ce rețeaua confirmă plata. Poate dura ceva timp; poți închide aplicația.",
+    "slowCard": "Plata ta este încă în curs de confirmare.",
+    "slowCardNote": "De obicei durează un minut sau două. Pro se activează automat.",
+    "slowCrypto": "Încă nicio confirmare.",
+    "slowCryptoNote": "Dacă ai trimis plata, Pro se va activa automat după ce rețeaua o confirmă.",
+    "refresh": "Verifică din nou",
+    "done": "Pro activ până la {date}",
+    "doneNote": "Conectează-te la Doppler pe orice dispozitiv cu ID-ul contului tău.",
+    "invoiceExpired": "Această factură a expirat. Nu mai trimite nimic la această adresă — revino și începe o plată nouă.",
+    "close":"Închide"
+  },
+  "apps": {
+    "eyebrow": "Disponibil pe",
+    "title": "Doppler VPN pe orice dispozitiv",
+    "directDownload": "Descărcare directă",
+    "blog": "Citește blogul Doppler"
+  },
+  "legal": {
+    "privacy": "Politica de confidențialitate",
+    "terms": "Termeni și condiții",
+    "refund": "Politica de rambursare"
   }
 }

@@ -26,6 +26,9 @@ const locales: Record<string, Messages> = {
   en, ru, es, zh, hi, ar, pt, ja, de, fa, uk, tr, ko, fr, it, pl, nl, id, th, vi, ro,
 };
 
+export const LOCALES = Object.keys(locales);
+export const RTL_LOCALES = ['ar', 'fa'];
+
 export function detectLanguage(): string {
   if (typeof window === 'undefined') return 'en';
   const lang = window.Telegram?.WebApp?.initDataUnsafe?.user?.language_code;

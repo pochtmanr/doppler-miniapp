@@ -14,7 +14,7 @@
     "feat2": "Nieograniczona przepustowość",
     "feat3": "Bez reklam",
     "feat4": "Priorytetowe wsparcie",
-    "feat5": "Do 5 urządzeń",
+    "feat5": "Do 10 urządzeń",
     "processing": "Przetwarzanie...",
     "error": "Coś poszło nie tak",
     "account": "Konto",
@@ -37,21 +37,49 @@
     "noAccount": "Otwórz @dopplercreatebot i naciśnij Start, a potem ponownie otwórz tę aplikację.",
     "openInTelegram": "Otwórz tę aplikację z bota Doppler VPN w Telegramie."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "Darmowy",
+    "activeUntil": "Aktywne do {date}",
+    "daysLeft": "Pozostało dni: {days}",
+    "devices": "Urządzenia: {used} z {max}",
+    "expiredOn": "Twój Pro wygasł {date}",
+    "noSubscription": "Brak aktywnej subskrypcji",
+    "idHint": "Twój klucz do Doppler. Zaloguj się nim na dowolnym urządzeniu.",
+    "copyId": "Kopiuj ID",
+    "getPro": "Kup Pro",
+    "extendPro": "Przedłuż Pro",
+    "extendNote": "Czas zostanie dodany do Twojego obecnego Pro.",
+    "renewPro": "Odnów Pro",
+    "storeWarning": "Twój Pro odnawia się przez App Store lub Google Play. Płatność tutaj doda czas, ale sklep nadal będzie pobierać opłaty. Najpierw anuluj subskrypcję w ustawieniach sklepu.",
+    "loading": "Ładowanie…",
+    "loadError": "Nie udało się wczytać konta."
   },
-  "success": {
-    "title": "Płatność zakończona!",
-    "description": "Twoja subskrypcja jest aktywna.",
-    "close": "Zamknij"
+  "pay": {
+    "confirming": "Potwierdzamy płatność…",
+    "confirmingNote": "Zwykle trwa to kilka sekund.",
+    "paidCrypto": "Płatność wysłana",
+    "waitingNetwork": "Czekamy na potwierdzenie sieci…",
+    "waitingNetworkNote": "Pro włączy się automatycznie, gdy sieć potwierdzi płatność. Może to chwilę potrwać — możesz zamknąć aplikację.",
+    "slowCard": "Płatność jest jeszcze potwierdzana.",
+    "slowCardNote": "Zwykle trwa to minutę lub dwie. Pro włączy się automatycznie.",
+    "slowCrypto": "Brak potwierdzenia.",
+    "slowCryptoNote": "Jeśli płatność została wysłana, Pro włączy się automatycznie, gdy sieć ją potwierdzi.",
+    "refresh": "Sprawdź ponownie",
+    "done": "Pro aktywne do {date}",
+    "doneNote": "Zaloguj się do Doppler na dowolnym urządzeniu za pomocą ID konta.",
+    "invoiceExpired": "Ta faktura wygasła. Nie wysyłaj na nią środków — wróć i rozpocznij nową płatność.",
+    "close":"Zamknij"
+  },
+  "apps": {
+    "eyebrow": "Dostępne na",
+    "title": "Doppler VPN na każdym urządzeniu",
+    "directDownload": "Bezpośrednie pobranie",
+    "blog": "Czytaj blog Doppler"
+  },
+  "legal": {
+    "privacy": "Polityka prywatności",
+    "terms": "Regulamin",
+    "refund": "Polityka zwrotów"
   }
 }

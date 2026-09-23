@@ -14,7 +14,7 @@
     "feat2": "Bandwidth tak terbatas",
     "feat3": "Tanpa iklan",
     "feat4": "Dukungan prioritas",
-    "feat5": "Hingga 5 perangkat",
+    "feat5": "Hingga 10 perangkat",
     "processing": "Memproses...",
     "error": "Terjadi kesalahan",
     "account": "Akun",
@@ -37,21 +37,49 @@
     "noAccount": "Buka @dopplercreatebot dan ketuk Mulai, lalu buka aplikasi ini lagi.",
     "openInTelegram": "Buka aplikasi ini dari bot Doppler VPN di Telegram."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "Gratis",
+    "activeUntil": "Aktif hingga {date}",
+    "daysLeft": "Sisa hari: {days}",
+    "devices": "Perangkat: {used} dari {max}",
+    "expiredOn": "Pro Anda berakhir pada {date}",
+    "noSubscription": "Tidak ada langganan aktif",
+    "idHint": "Kunci Doppler Anda. Masuk dengan ID ini di perangkat mana pun.",
+    "copyId": "Salin ID",
+    "getPro": "Dapatkan Pro",
+    "extendPro": "Perpanjang Pro",
+    "extendNote": "Waktu ditambahkan ke Pro Anda saat ini.",
+    "renewPro": "Aktifkan lagi Pro",
+    "storeWarning": "Pro Anda diperpanjang melalui App Store atau Google Play. Membayar di sini menambah waktu, tetapi toko akan terus menagih Anda. Batalkan dulu langganan di pengaturan toko.",
+    "loading": "Memuat…",
+    "loadError": "Akun Anda tidak dapat dimuat."
   },
-  "success": {
-    "title": "Pembayaran berhasil!",
-    "description": "Langganan Anda aktif.",
-    "close": "Tutup"
+  "pay": {
+    "confirming": "Mengonfirmasi pembayaran Anda…",
+    "confirmingNote": "Biasanya hanya beberapa detik.",
+    "paidCrypto": "Saya sudah bayar",
+    "waitingNetwork": "Menunggu konfirmasi jaringan…",
+    "waitingNetworkNote": "Pro aktif otomatis setelah jaringan mengonfirmasi pembayaran Anda. Ini bisa memakan waktu; Anda boleh menutup aplikasi.",
+    "slowCard": "Pembayaran Anda masih dikonfirmasi.",
+    "slowCardNote": "Biasanya butuh satu atau dua menit. Pro aktif otomatis.",
+    "slowCrypto": "Belum ada konfirmasi.",
+    "slowCryptoNote": "Jika Anda sudah mengirim pembayaran, Pro akan aktif otomatis setelah jaringan mengonfirmasinya.",
+    "refresh": "Periksa lagi",
+    "done": "Pro aktif hingga {date}",
+    "doneNote": "Masuk ke Doppler di perangkat mana pun dengan ID akun Anda.",
+    "invoiceExpired": "Tagihan ini sudah kedaluwarsa. Jangan kirim apa pun ke alamat ini — kembali dan mulai pembayaran baru.",
+    "close":"Tutup"
+  },
+  "apps": {
+    "eyebrow": "Tersedia di",
+    "title": "Doppler VPN di setiap perangkat",
+    "directDownload": "Unduh langsung",
+    "blog": "Baca blog Doppler"
+  },
+  "legal": {
+    "privacy": "Kebijakan Privasi",
+    "terms": "Ketentuan Layanan",
+    "refund": "Kebijakan Pengembalian Dana"
   }
 }

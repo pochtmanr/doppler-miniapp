@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
+/* Tokens copied from doppler-web's globals.css ("Glyph Terminal", doppler-web/DESIGN.md).
+   Keep the two in step: change the landing first, then copy here. */
 @theme {
-  /* ─── Colors — matches landing v2 (miniapp keeps its own teal hue) ─ */
+  /* ─── Colors — dark mode defaults ─────────────────────────────────── */
   --color-bg-primary:        #141414;
   --color-bg-secondary:      #1C1C1C;
   --color-bg-elevated:       #242424;
@@ -12,22 +14,20 @@
   --color-text-muted:        #C5C5C5;
   --color-text-tertiary:     #8A8A8A;
 
-  --color-accent-gold:       #E1DECF;
-  --color-accent-teal:       #5390A8;   /* miniapp-specific cooler blue */
-  --color-accent-teal-light: #73B0C8;
+  --color-accent-gold:       #D4D6DB;   /* cool silver, despite the name */
+  --color-accent-teal:       #008C8C;
+  --color-accent-teal-light: #00ABAB;
 
-  --color-accent-violet:     #8B7FD9;
-  --color-accent-amber:      #F4C95D;
+  --color-accent-amber:      #F4C95D;   /* warnings */
   --color-danger:            #F06763;
 
-  --color-overlay:           #FFFFFF;
+  --color-overlay:           #FFFFFF;   /* every border and hairline: overlay/5|10|20 */
 
-  /* Typography — font variables set by next/font in layout.tsx */
-  --font-family-body: var(--font-body), "Space Grotesk", system-ui, sans-serif;
-  --font-family-display: var(--font-serif), "Instrument Serif", Georgia, serif;
-  --font-family-raster: var(--font-raster), "FK Raster Roman Compact", monospace;
+  /* Headings match the iOS app's SF Pro Rounded. `ui-rounded` resolves to it in
+     Safari; other webviews get Nunito 700 from next/font (--font-rounded). */
+  --font-display: ui-rounded, "SF Pro Rounded", var(--font-rounded), system-ui, sans-serif;
 
-  /* Border Radius */
+  /* The landing's radius remap: rounded-lg is 16px and rounded-xl 24px. */
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
@@ -35,71 +35,156 @@
   --radius-full: 9999px;
 }
 
-/* Violet + amber + red scales */
-:root {
-  --violet-50:  #F0EEFA;
-  --violet-100: #DCD8F1;
-  --violet-200: #C4BDE8;
-  --violet-300: #ABA2DE;
-  --violet-400: #9888D4;
-  --violet-500: #8B7FD9;
-  --violet-600: #6F62BF;
-  --violet-700: #544AA0;
-  --violet-800: #3C347A;
-  --violet-900: #262150;
-  --violet-a10: rgba(139, 127, 217, 0.10);
-  --violet-a20: rgba(139, 127, 217, 0.20);
-  --violet-a30: rgba(139, 127, 217, 0.30);
-  --violet-a40: rgba(139, 127, 217, 0.40);
+/* Light mode — set on <html> from Telegram.WebApp.colorScheme (see layout.tsx). */
+.light {
+  --color-bg-primary:        #F5F5F7;
+  --color-bg-secondary:      #EDEEF1;
+  --color-bg-elevated:       #E3E4E8;
+  --color-bg-pressed:        #D8D9DE;
+  --color-bg-card:           oklch(0.97 0.004 260 / 0.85);
 
-  --amber-50:   #FEF7E3;
-  --amber-100:  #FCEBB8;
-  --amber-200:  #FADF8D;
-  --amber-300:  #F8D374;
-  --amber-400:  #F6CE66;
-  --amber-500:  #F4C95D;
-  --amber-600:  #D4A947;
-  --amber-700:  #A88434;
-  --amber-800:  #7A5F22;
-  --amber-900:  #4D3B14;
-  --amber-a10:  rgba(244, 201, 93, 0.10);
-  --amber-a20:  rgba(244, 201, 93, 0.20);
-  --amber-a30:  rgba(244, 201, 93, 0.30);
+  --color-text-primary:      #1A1A1A;
+  --color-text-muted:        #5A5C63;
+  --color-text-tertiary:     #8A8A8A;
 
-  --red-500: #F06763;
-  --red-600: #D94E4A;
-  --red-700: #B03B37;
-  --red-a10: rgba(240, 103, 99, 0.10);
-  --red-a20: rgba(240, 103, 99, 0.20);
+  --color-accent-gold:       #3A3D42;   /* graphite */
+  --color-accent-teal:       #007070;
+  --color-accent-teal-light: #008080;
 
-  --shadow-violet: 0 10px 25px -5px rgba(139, 127, 217, 0.25);
-  --shadow-amber:  0 10px 25px -5px rgba(244, 201, 93, 0.20);
-}
+  --color-accent-amber:      #A88434;
+  --color-danger:            #B03B37;
 
-/* Base styles */
-html {
-  scroll-behavior: smooth;
+  --color-overlay:           #000000;
 }
 
 body {
-  font-family: var(--font-body);
+  /* Rubik after Space Grotesk covers Cyrillic, which Space Grotesk lacks. */
+  font-family: var(--font-body), var(--font-rubik), system-ui, sans-serif;
   background-color: var(--color-bg-primary);
   color: var(--color-text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
-  padding: 0;
   min-height: 100vh;
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
-/* Focus visible for accessibility */
+/* Russian and Ukrainian read in Rubik throughout, as on the landing, instead of
+   switching faces between Cyrillic and Latin words. */
+html:lang(ru) body,
+html:lang(uk) body {
+  font-family: var(--font-rubik), system-ui, sans-serif;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
 :focus-visible {
   outline: 2px solid var(--color-accent-teal);
   outline-offset: 2px;
 }
 
-/* Selection color */
 ::selection {
   background-color: var(--color-accent-teal);
+  color: #FFFFFF;
+}
+
+/* Primary CTA — the landing's keycap (doppler-web globals.css `.cta-key`).
+   One per screen; its neighbours use `.cta-flat`. */
+.cta-key {
+  position: relative;
+  --key-face:   #0BA6A6;
+  --key-edge:   #009898;
+  --key-base:   #008C8C;
+  --key-skirt:  #00595C;
+  --key-ambient: rgb(0 140 140 / 0.5);
+  --key-lift:   4px;
+  background-image: linear-gradient(
+    to bottom,
+    var(--key-face) 0%,
+    var(--key-edge) 45%,
+    var(--key-base) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.32),
+    inset 0 -1px 0 rgb(0 0 0 / 0.28),
+    0 var(--key-lift) 0 var(--key-skirt),
+    0 calc(var(--key-lift) + 2px) 14px -4px var(--key-ambient);
+  transition:
+    transform 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 120ms cubic-bezier(0.22, 1, 0.36, 1),
+    filter 160ms ease-out;
+}
+.cta-key::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgb(255 255 255 / 0.55),
+    rgb(255 255 255 / 0.06) 42%,
+    rgb(0 0 0 / 0.28)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.cta-key:hover {
+  filter: brightness(1.07);
+}
+.cta-key:active:not(:disabled):not([aria-disabled="true"]) {
+  transform: translateY(calc(var(--key-lift) - 1px));
+  box-shadow:
+    inset 0 2px 5px rgb(0 0 0 / 0.32),
+    inset 0 -1px 0 rgb(255 255 255 / 0.12),
+    0 1px 0 var(--key-skirt),
+    0 2px 6px -4px var(--key-ambient);
+}
+.cta-key:disabled,
+.cta-key[aria-disabled="true"] {
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.2);
+  filter: saturate(0.6);
+}
+.cta-key:disabled::before,
+.cta-key[aria-disabled="true"]::before {
+  opacity: 0.35;
+}
+.light .cta-key {
+  --key-face:   #098A8A;
+  --key-edge:   #007B7B;
+  --key-base:   #007070;
+  --key-skirt:  #004E4E;
+  --key-ambient: rgb(0 0 0 / 0.3);
+}
+
+/* The keycap's flat counterpart (doppler-web `.cta-flat`). */
+.cta-flat {
+  background-color: color-mix(in oklab, var(--color-bg-secondary) 70%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-overlay) 10%, transparent);
+  color: var(--color-text-muted);
+  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out;
+}
+.cta-flat:hover {
+  background-color: var(--color-bg-elevated);
+  border-color: color-mix(in oklab, var(--color-overlay) 25%, transparent);
   color: var(--color-text-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-key {
+    transition: none;
+  }
 }

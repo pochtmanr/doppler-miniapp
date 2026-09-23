@@ -14,7 +14,7 @@
     "feat2": "无限带宽",
     "feat3": "无广告",
     "feat4": "优先支持",
-    "feat5": "最多5台设备",
+    "feat5": "最多10台设备",
     "processing": "处理中...",
     "error": "出了点问题",
     "account": "账户",
@@ -37,21 +37,49 @@
     "noAccount": "请打开 @dopplercreatebot 并点击“开始”，然后重新打开此应用。",
     "openInTelegram": "请从 Telegram 中的 Doppler VPN 机器人打开此应用。"
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "免费",
+    "activeUntil": "有效期至 {date}",
+    "daysLeft": "剩余天数：{days}",
+    "devices": "设备：{used}/{max}",
+    "expiredOn": "您的 Pro 已于 {date} 到期",
+    "noSubscription": "无有效订阅",
+    "idHint": "这是您的 Doppler 密钥，可在任何设备上用它登录。",
+    "copyId": "复制 ID",
+    "getPro": "获取 Pro",
+    "extendPro": "延长 Pro",
+    "extendNote": "时长将叠加到您当前的 Pro 上。",
+    "renewPro": "续订 Pro",
+    "storeWarning": "您的 Pro 通过 App Store 或 Google Play 自动续订。在此付款会增加时长，但商店仍会继续扣费。请先在商店设置中取消订阅。",
+    "loading": "加载中…",
+    "loadError": "无法加载您的账户。"
   },
-  "success": {
-    "title": "支付成功！",
-    "description": "您的Doppler VPN Pro订阅已激活。",
-    "close": "关闭"
+  "pay": {
+    "confirming": "正在确认您的付款…",
+    "confirmingNote": "通常只需几秒钟。",
+    "paidCrypto": "我已付款",
+    "waitingNetwork": "正在等待网络确认…",
+    "waitingNetworkNote": "网络确认付款后，Pro 将自动开通。这可能需要一些时间，您可以关闭应用。",
+    "slowCard": "您的付款仍在确认中。",
+    "slowCardNote": "通常需要一两分钟。Pro 将自动开通。",
+    "slowCrypto": "尚未收到确认。",
+    "slowCryptoNote": "如果您已发送付款，网络确认后 Pro 将自动开通。",
+    "refresh": "再次检查",
+    "done": "Pro 有效期至 {date}",
+    "doneNote": "在任何设备上使用您的账户 ID 登录 Doppler。",
+    "invoiceExpired": "此账单已过期。请勿再向该地址付款，请返回并重新发起付款。",
+    "close":"关闭"
+  },
+  "apps": {
+    "eyebrow": "支持平台",
+    "title": "Doppler VPN 适用于所有设备",
+    "directDownload": "直接下载",
+    "blog": "阅读 Doppler 博客"
+  },
+  "legal": {
+    "privacy": "隐私政策",
+    "terms": "服务条款",
+    "refund": "退款政策"
   }
 }

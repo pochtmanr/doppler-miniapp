@@ -14,7 +14,7 @@
     "feat2": "پهنای باند نامحدود",
     "feat3": "بدون تبلیغات",
     "feat4": "پشتیبانی ویژه",
-    "feat5": "تا 5 دستگاه",
+    "feat5": "تا 10 دستگاه",
     "processing": "...در حال پردازش",
     "error": "خطایی رخ داد",
     "account": "حساب",
@@ -37,21 +37,49 @@
     "noAccount": "‎@dopplercreatebot را باز کنید و «شروع» را بزنید، سپس دوباره این برنامه را باز کنید.",
     "openInTelegram": "این برنامه را از ربات Doppler VPN در تلگرام باز کنید."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "رایگان",
+    "activeUntil": "فعال تا {date}",
+    "daysLeft": "روزهای باقی‌مانده: {days}",
+    "devices": "دستگاه‌ها: {used} از {max}",
+    "expiredOn": "اشتراک Pro شما در تاریخ {date} منقضی شد",
+    "noSubscription": "اشتراک فعالی ندارید",
+    "idHint": "کلید شما برای Doppler. با آن در هر دستگاهی وارد شوید.",
+    "copyId": "کپی شناسه",
+    "getPro": "دریافت Pro",
+    "extendPro": "تمدید Pro",
+    "extendNote": "زمان به اشتراک Pro فعلی شما اضافه می‌شود.",
+    "renewPro": "فعال‌سازی دوباره Pro",
+    "storeWarning": "اشتراک Pro شما از طریق App Store یا Google Play تمدید می‌شود. پرداخت در اینجا زمان اضافه می‌کند، اما فروشگاه همچنان هزینه دریافت می‌کند. ابتدا اشتراک را در تنظیمات فروشگاه لغو کنید.",
+    "loading": "در حال بارگذاری…",
+    "loadError": "بارگذاری حساب ممکن نشد."
   },
-  "success": {
-    "title": "!پرداخت موفق",
-    "description": ".اشتراک شما فعال شد",
-    "close": "بستن"
+  "pay": {
+    "confirming": "در حال تأیید پرداخت…",
+    "confirmingNote": "معمولاً چند ثانیه طول می‌کشد.",
+    "paidCrypto": "پرداخت کردم",
+    "waitingNetwork": "در انتظار تأیید شبکه…",
+    "waitingNetworkNote": "پس از تأیید پرداخت توسط شبکه، Pro به‌طور خودکار فعال می‌شود. ممکن است کمی طول بکشد؛ می‌توانید برنامه را ببندید.",
+    "slowCard": "پرداخت شما هنوز در حال تأیید است.",
+    "slowCardNote": "معمولاً یکی دو دقیقه طول می‌کشد. Pro به‌طور خودکار فعال می‌شود.",
+    "slowCrypto": "هنوز تأییدی دریافت نشده.",
+    "slowCryptoNote": "اگر پرداخت را ارسال کرده‌اید، پس از تأیید شبکه Pro به‌طور خودکار فعال می‌شود.",
+    "refresh": "بررسی دوباره",
+    "done": "Pro تا {date} فعال است",
+    "doneNote": "با شناسه حساب خود در هر دستگاهی وارد Doppler شوید.",
+    "invoiceExpired": "مهلت این صورت‌حساب تمام شده است. چیزی به این آدرس نفرستید — برگردید و پرداخت جدیدی شروع کنید.",
+    "close":"بستن"
+  },
+  "apps": {
+    "eyebrow": "در دسترس در",
+    "title": "Doppler VPN روی تمام دستگاه‌ها",
+    "directDownload": "دانلود مستقیم",
+    "blog": "خواندن وبلاگ Doppler"
+  },
+  "legal": {
+    "privacy": "سیاست حریم خصوصی",
+    "terms": "شرایط خدمات",
+    "refund": "سیاست بازپرداخت"
   }
 }

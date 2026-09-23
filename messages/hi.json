@@ -14,7 +14,7 @@
     "feat2": "अनलिमिटेड बैंडविड्थ",
     "feat3": "कोई विज्ञापन नहीं",
     "feat4": "प्राथमिकता सहायता",
-    "feat5": "5 डिवाइस तक",
+    "feat5": "10 डिवाइस तक",
     "processing": "प्रोसेसिंग...",
     "error": "कुछ गलत हो गया",
     "account": "खाता",
@@ -37,21 +37,49 @@
     "noAccount": "@dopplercreatebot खोलें और Start दबाएँ, फिर यह ऐप दोबारा खोलें।",
     "openInTelegram": "यह ऐप Telegram में Doppler VPN बॉट से खोलें।"
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "मुफ़्त",
+    "activeUntil": "{date} तक सक्रिय",
+    "daysLeft": "बचे दिन: {days}",
+    "devices": "डिवाइस: {max} में से {used}",
+    "expiredOn": "आपकी Pro सदस्यता {date} को समाप्त हो गई",
+    "noSubscription": "कोई सक्रिय सदस्यता नहीं",
+    "idHint": "यह Doppler की आपकी कुंजी है। किसी भी डिवाइस पर इससे साइन इन करें।",
+    "copyId": "ID कॉपी करें",
+    "getPro": "Pro पाएं",
+    "extendPro": "Pro बढ़ाएं",
+    "extendNote": "समय आपकी मौजूदा Pro सदस्यता में जुड़ जाएगा।",
+    "renewPro": "Pro नवीनीकृत करें",
+    "storeWarning": "आपकी Pro सदस्यता App Store या Google Play से नवीनीकृत होती है। यहां भुगतान करने से समय बढ़ेगा, लेकिन स्टोर शुल्क लेता रहेगा। पहले स्टोर की सेटिंग्स में सदस्यता रद्द करें।",
+    "loading": "लोड हो रहा है…",
+    "loadError": "आपका खाता लोड नहीं हो सका।"
   },
-  "success": {
-    "title": "भुगतान सफल!",
-    "description": "आपकी सदस्यता सक्रिय है।",
-    "close": "बंद करें"
+  "pay": {
+    "confirming": "आपके भुगतान की पुष्टि हो रही है…",
+    "confirmingNote": "इसमें आमतौर पर कुछ सेकंड लगते हैं।",
+    "paidCrypto": "मैंने भुगतान कर दिया",
+    "waitingNetwork": "नेटवर्क की पुष्टि का इंतज़ार है…",
+    "waitingNetworkNote": "नेटवर्क के भुगतान की पुष्टि करते ही Pro अपने आप चालू हो जाएगा। इसमें कुछ समय लग सकता है; आप ऐप बंद कर सकते हैं।",
+    "slowCard": "आपके भुगतान की पुष्टि अभी जारी है।",
+    "slowCardNote": "इसमें आमतौर पर एक-दो मिनट लगते हैं। Pro अपने आप चालू हो जाएगा।",
+    "slowCrypto": "अभी तक पुष्टि नहीं हुई।",
+    "slowCryptoNote": "अगर आपने भुगतान भेज दिया है, तो नेटवर्क की पुष्टि होते ही Pro अपने आप चालू हो जाएगा।",
+    "refresh": "फिर से जांचें",
+    "done": "Pro {date} तक सक्रिय है",
+    "doneNote": "अपने खाता ID से किसी भी डिवाइस पर Doppler में साइन इन करें।",
+    "invoiceExpired": "इस इनवॉइस की समय-सीमा समाप्त हो गई है। इस पते पर कुछ न भेजें — वापस जाएं और नया भुगतान शुरू करें।",
+    "close":"बंद करें"
+  },
+  "apps": {
+    "eyebrow": "उपलब्ध है",
+    "title": "हर डिवाइस पर Doppler VPN",
+    "directDownload": "सीधे डाउनलोड करें",
+    "blog": "Doppler ब्लॉग पढ़ें"
+  },
+  "legal": {
+    "privacy": "गोपनीयता नीति",
+    "terms": "सेवा की शर्तें",
+    "refund": "रिफ़ंड नीति"
   }
 }

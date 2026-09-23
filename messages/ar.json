@@ -14,7 +14,7 @@
     "feat2": "نطاق ترددي غير محدود",
     "feat3": "بدون إعلانات",
     "feat4": "دعم أولوي",
-    "feat5": "حتى 5 أجهزة",
+    "feat5": "حتى 10 أجهزة",
     "processing": "...جارٍ المعالجة",
     "error": "حدث خطأ ما",
     "account": "الحساب",
@@ -37,21 +37,49 @@
     "noAccount": "افتح ‎@dopplercreatebot واضغط «ابدأ»، ثم افتح هذا التطبيق مرة أخرى.",
     "openInTelegram": "افتح هذا التطبيق من بوت Doppler VPN في تيليجرام."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "مجاني",
+    "activeUntil": "نشط حتى {date}",
+    "daysLeft": "الأيام المتبقية: {days}",
+    "devices": "الأجهزة: {used} من {max}",
+    "expiredOn": "انتهى اشتراك Pro بتاريخ {date}",
+    "noSubscription": "لا يوجد اشتراك نشط",
+    "idHint": "مفتاحك إلى Doppler. سجّل الدخول به على أي جهاز.",
+    "copyId": "نسخ المعرّف",
+    "getPro": "احصل على Pro",
+    "extendPro": "تمديد Pro",
+    "extendNote": "تُضاف المدة إلى اشتراك Pro الحالي.",
+    "renewPro": "تجديد Pro",
+    "storeWarning": "يتجدد اشتراك Pro عبر App Store أو Google Play. الدفع هنا يضيف مدة، لكن المتجر سيستمر في خصم الرسوم. ألغِ الاشتراك أولاً من إعدادات المتجر.",
+    "loading": "جارٍ التحميل…",
+    "loadError": "تعذّر تحميل حسابك."
   },
-  "success": {
-    "title": "!تم الدفع بنجاح",
-    "description": ".اشتراكك نشط الآن",
-    "close": "إغلاق"
+  "pay": {
+    "confirming": "جارٍ تأكيد الدفع…",
+    "confirmingNote": "يستغرق ذلك عادةً بضع ثوانٍ.",
+    "paidCrypto": "لقد دفعت",
+    "waitingNetwork": "في انتظار تأكيد الشبكة…",
+    "waitingNetworkNote": "يُفعَّل Pro تلقائيًا بعد أن تؤكد الشبكة دفعتك. قد يستغرق ذلك بعض الوقت، ويمكنك إغلاق التطبيق.",
+    "slowCard": "لا يزال تأكيد الدفع جاريًا.",
+    "slowCardNote": "يستغرق ذلك عادةً دقيقة أو دقيقتين. يُفعَّل Pro تلقائيًا.",
+    "slowCrypto": "لا يوجد تأكيد بعد.",
+    "slowCryptoNote": "إذا كنت قد أرسلت الدفعة، فسيُفعَّل Pro تلقائيًا بعد أن تؤكدها الشبكة.",
+    "refresh": "تحقق مجددًا",
+    "done": "Pro نشط حتى {date}",
+    "doneNote": "سجّل الدخول إلى Doppler على أي جهاز باستخدام معرّف حسابك.",
+    "invoiceExpired": "انتهت صلاحية هذه الفاتورة. لا ترسل أي مبلغ إليها — ارجع وابدأ عملية دفع جديدة.",
+    "close":"إغلاق"
+  },
+  "apps": {
+    "eyebrow": "متوفر على",
+    "title": "Doppler VPN على كل جهاز",
+    "directDownload": "تنزيل مباشر",
+    "blog": "اقرأ مدونة Doppler"
+  },
+  "legal": {
+    "privacy": "سياسة الخصوصية",
+    "terms": "شروط الخدمة",
+    "refund": "سياسة الاسترداد"
   }
 }

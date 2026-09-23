@@ -14,7 +14,7 @@
     "feat2": "Безлімітний трафік",
     "feat3": "Без реклами",
     "feat4": "Пріоритетна підтримка",
-    "feat5": "До 5 пристроїв",
+    "feat5": "До 10 пристроїв",
     "processing": "Обробка...",
     "error": "Щось пішло не так",
     "account": "Акаунт",
@@ -37,21 +37,49 @@
     "noAccount": "Відкрийте @dopplercreatebot і натисніть «Старт», потім знову відкрийте цей застосунок.",
     "openInTelegram": "Відкрийте цей застосунок із бота Doppler VPN у Telegram."
   },
-  "status": {
-    "title": "Your Subscription",
-    "tier": "Plan",
-    "expiresAt": "Expires",
-    "daysRemaining": "{days} days remaining",
-    "noSubscription": "No active subscription",
-    "subscribe": "Get Pro",
-    "active": "Active",
-    "expired": "Expired",
-    "free": "Free",
-    "pro": "Pro"
+  "account": {
+    "pro": "Pro",
+    "free": "Безкоштовний",
+    "activeUntil": "Активна до {date}",
+    "daysLeft": "Залишилося днів: {days}",
+    "devices": "Пристрої: {used} з {max}",
+    "expiredOn": "Pro-підписка закінчилася {date}",
+    "noSubscription": "Немає активної підписки",
+    "idHint": "Ваш ключ до Doppler. Входьте з ним на будь-якому пристрої.",
+    "copyId": "Скопіювати ID",
+    "getPro": "Отримати Pro",
+    "extendPro": "Продовжити Pro",
+    "extendNote": "Час додасться до вашої поточної підписки Pro.",
+    "renewPro": "Поновити Pro",
+    "storeWarning": "Ваша Pro-підписка продовжується через App Store або Google Play. Оплата тут додасть час, але магазин і далі списуватиме кошти. Спершу скасуйте підписку в налаштуваннях магазину.",
+    "loading": "Завантаження…",
+    "loadError": "Не вдалося завантажити акаунт."
   },
-  "success": {
-    "title": "Оплата успішна!",
-    "description": "Вашу підписку активовано.",
-    "close": "Закрити"
+  "pay": {
+    "confirming": "Підтверджуємо оплату…",
+    "confirmingNote": "Зазвичай це займає кілька секунд.",
+    "paidCrypto": "Оплату надіслано",
+    "waitingNetwork": "Чекаємо на підтвердження мережі…",
+    "waitingNetworkNote": "Pro увімкнеться автоматично, щойно мережа підтвердить платіж. Це може зайняти час — застосунок можна закрити.",
+    "slowCard": "Оплата ще підтверджується.",
+    "slowCardNote": "Зазвичай це займає хвилину-дві. Pro увімкнеться автоматично.",
+    "slowCrypto": "Підтвердження поки немає.",
+    "slowCryptoNote": "Якщо ви вже надіслали платіж, Pro увімкнеться автоматично, щойно мережа його підтвердить.",
+    "refresh": "Перевірити ще раз",
+    "done": "Pro активна до {date}",
+    "doneNote": "Увійдіть у Doppler на будь-якому пристрої за допомогою ID акаунта.",
+    "invoiceExpired": "Термін дії рахунку минув. Не надсилайте на нього кошти — поверніться назад і почніть нову оплату.",
+    "close":"Закрити"
+  },
+  "apps": {
+    "eyebrow": "Доступно на",
+    "title": "Doppler VPN на будь-якому пристрої",
+    "directDownload": "Пряме завантаження",
+    "blog": "Читати блог Doppler"
+  },
+  "legal": {
+    "privacy": "Політика конфіденційності",
+    "terms": "Умови використання",
+    "refund": "Політика повернення коштів"
   }
 }
