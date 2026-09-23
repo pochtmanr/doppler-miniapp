@@ -1,3 +1,4 @@
+import { LANG_KEY, readPref } from './prefs';
 import en from '../../messages/en.json';
 import ru from '../../messages/ru.json';
 import es from '../../messages/es.json';
@@ -29,8 +30,18 @@ const locales: Record<string, Messages> = {
 export const LOCALES = Object.keys(locales);
 export const RTL_LOCALES = ['ar', 'fa'];
 
+/** Endonyms for the language picker, in LOCALES order. Not translated on purpose. */
+export const LANGUAGE_NAMES: Record<string, string> = {
+  en: 'English', ru: 'Русский', es: 'Español', zh: '中文', hi: 'हिन्दी', ar: 'العربية', pt: 'Português',
+  ja: '日本語', de: 'Deutsch', fa: 'فارسی', uk: 'Українська', tr: 'Türkçe', ko: '한국어', fr: 'Français',
+  it: 'Italiano', pl: 'Polski', nl: 'Nederlands', id: 'Bahasa Indonesia', th: 'ไทย', vi: 'Tiếng Việt', ro: 'Română',
+};
+
+/** The language the viewer picked in the app, else Telegram's, else English. */
 export function detectLanguage(): string {
   if (typeof window === 'undefined') return 'en';
+  const picked = readPref(LANG_KEY);
+  if (picked && locales[picked]) return picked;
   const lang = window.Telegram?.WebApp?.initDataUnsafe?.user?.language_code;
   if (!lang) return 'en';
   if (locales[lang]) return lang;

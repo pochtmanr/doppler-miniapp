@@ -102,5 +102,12 @@
     "privacy": "Datenschutzerklärung",
     "terms": "Nutzungsbedingungen",
     "refund": "Rückerstattungsrichtlinie"
+  },
+  "prefs": {
+    "language": "Sprache",
+    "theme": "Design",
+    "themeAuto": "Auto",
+    "themeLight": "Hell",
+    "themeDark": "Dunkel"
   }
 }

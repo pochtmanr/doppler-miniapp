@@ -102,5 +102,12 @@
     "privacy": "سياسة الخصوصية",
     "terms": "شروط الخدمة",
     "refund": "سياسة الاسترداد"
+  },
+  "prefs": {
+    "language": "اللغة",
+    "theme": "المظهر",
+    "themeAuto": "تلقائي",
+    "themeLight": "فاتح",
+    "themeDark": "داكن"
   }
 }

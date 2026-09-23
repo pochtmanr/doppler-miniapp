@@ -102,5 +102,12 @@
     "privacy": "Privacybeleid",
     "terms": "Algemene voorwaarden",
     "refund": "Terugbetalingsbeleid"
+  },
+  "prefs": {
+    "language": "Taal",
+    "theme": "Thema",
+    "themeAuto": "Auto",
+    "themeLight": "Licht",
+    "themeDark": "Donker"
   }
 }

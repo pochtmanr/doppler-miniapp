@@ -102,5 +102,12 @@
     "privacy": "Política de privacidad",
     "terms": "Términos de servicio",
     "refund": "Política de reembolso"
+  },
+  "prefs": {
+    "language": "Idioma",
+    "theme": "Tema",
+    "themeAuto": "Auto",
+    "themeLight": "Claro",
+    "themeDark": "Oscuro"
   }
 }

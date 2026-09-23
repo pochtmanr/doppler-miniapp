@@ -102,5 +102,12 @@
     "privacy": "プライバシーポリシー",
     "terms": "利用規約",
     "refund": "返金ポリシー"
+  },
+  "prefs": {
+    "language": "言語",
+    "theme": "テーマ",
+    "themeAuto": "自動",
+    "themeLight": "ライト",
+    "themeDark": "ダーク"
   }
 }

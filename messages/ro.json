@@ -102,5 +102,12 @@
     "privacy": "Politica de confidențialitate",
     "terms": "Termeni și condiții",
     "refund": "Politica de rambursare"
+  },
+  "prefs": {
+    "language": "Limbă",
+    "theme": "Temă",
+    "themeAuto": "Auto",
+    "themeLight": "Luminoasă",
+    "themeDark": "Întunecată"
   }
 }

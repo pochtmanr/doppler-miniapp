@@ -102,5 +102,12 @@
     "privacy": "Gizlilik Politikası",
     "terms": "Hizmet Koşulları",
     "refund": "İade Politikası"
+  },
+  "prefs": {
+    "language": "Dil",
+    "theme": "Tema",
+    "themeAuto": "Otomatik",
+    "themeLight": "Açık",
+    "themeDark": "Koyu"
   }
 }

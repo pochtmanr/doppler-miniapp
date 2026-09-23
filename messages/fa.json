@@ -102,5 +102,12 @@
     "privacy": "سیاست حریم خصوصی",
     "terms": "شرایط خدمات",
     "refund": "سیاست بازپرداخت"
+  },
+  "prefs": {
+    "language": "زبان",
+    "theme": "پوسته",
+    "themeAuto": "خودکار",
+    "themeLight": "روشن",
+    "themeDark": "تیره"
   }
 }

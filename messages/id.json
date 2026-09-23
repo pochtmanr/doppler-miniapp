@@ -102,5 +102,12 @@
     "privacy": "Kebijakan Privasi",
     "terms": "Ketentuan Layanan",
     "refund": "Kebijakan Pengembalian Dana"
+  },
+  "prefs": {
+    "language": "Bahasa",
+    "theme": "Tema",
+    "themeAuto": "Otomatis",
+    "themeLight": "Terang",
+    "themeDark": "Gelap"
   }
 }

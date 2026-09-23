@@ -102,5 +102,12 @@
     "privacy": "隐私政策",
     "terms": "服务条款",
     "refund": "退款政策"
+  },
+  "prefs": {
+    "language": "语言",
+    "theme": "主题",
+    "themeAuto": "自动",
+    "themeLight": "浅色",
+    "themeDark": "深色"
   }
 }

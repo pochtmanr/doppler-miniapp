@@ -102,5 +102,12 @@
     "privacy": "Polityka prywatności",
     "terms": "Regulamin",
     "refund": "Polityka zwrotów"
+  },
+  "prefs": {
+    "language": "Język",
+    "theme": "Motyw",
+    "themeAuto": "Auto",
+    "themeLight": "Jasny",
+    "themeDark": "Ciemny"
   }
 }

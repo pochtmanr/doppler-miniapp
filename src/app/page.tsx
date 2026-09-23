@@ -9,6 +9,8 @@ import { BlogReader } from '@/components/blog-reader';
 import { BlogSection } from '@/components/blog-section';
 import { DevicesCard } from '@/components/devices-card';
 import { Downloads } from '@/components/downloads';
+import { PrefsBar } from '@/components/prefs-bar';
+import { LANG_KEY, writePref } from '@/lib/prefs';
 import { useBlogList } from '@/lib/blog-client';
 import { BTN_FLAT, BTN_PRIMARY, CARD, CARD_HAIRLINE, EYEBROW, ICON_TILE, INPUT } from '@/components/ui/recipes';
 
@@ -135,14 +137,23 @@ export default function Home() {
     return data.accountId ? (data as AccountStatus) : null;
   }, []);
 
+  const applyLang = useCallback((next: string) => {
+    setLang(next);
+    setMessages(getMessages(next));
+    document.documentElement.lang = next;
+    document.documentElement.dir = RTL_LOCALES.includes(next) ? 'rtl' : 'ltr';
+  }, []);
+
+  /** From the picker: saved on this device, and wins over Telegram's language next time. */
+  const pickLang = (next: string) => {
+    writePref(LANG_KEY, next);
+    applyLang(next);
+  };
+
   useEffect(() => {
-    const detected = detectLanguage();
-    setLang(detected);
-    setMessages(getMessages(detected));
-    // The boot script sets these from the launch hash; a reload without the hash keeps
+    // The boot script sets lang/dir from the launch hash; a reload without the hash keeps
     // initData (Telegram restores it) but not the hash, so set them here as well.
-    document.documentElement.lang = detected;
-    document.documentElement.dir = RTL_LOCALES.includes(detected) ? 'rtl' : 'ltr';
+    applyLang(detectLanguage());
 
     const tg = window.Telegram?.WebApp;
     if (tg) {
@@ -159,7 +170,7 @@ export default function Home() {
         setLoad(s ? 'ready' : 'none');
       })
       .catch(() => setLoad('error'));
-  }, [fetchStatus]);
+  }, [fetchStatus, applyLang]);
 
   // Each phase is a new screen; don't leave the user scrolled into the middle of it.
   useEffect(() => {
@@ -332,7 +343,10 @@ export default function Home() {
   );
 
   const shell = (children: React.ReactNode) => (
-    <main className="min-h-screen px-4 pt-6 pb-8 max-w-lg mx-auto">{children}</main>
+    <main className="min-h-screen px-4 pt-4 pb-8 max-w-lg mx-auto">
+      <PrefsBar lang={lang} messages={messages} onLang={pickLang} />
+      {children}
+    </main>
   );
 
   // ── Not in Telegram, no linked account, or the lookup failed ─────────────────

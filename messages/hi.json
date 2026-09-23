@@ -102,5 +102,12 @@
     "privacy": "गोपनीयता नीति",
     "terms": "सेवा की शर्तें",
     "refund": "रिफ़ंड नीति"
+  },
+  "prefs": {
+    "language": "भाषा",
+    "theme": "थीम",
+    "themeAuto": "ऑटो",
+    "themeLight": "लाइट",
+    "themeDark": "डार्क"
   }
 }

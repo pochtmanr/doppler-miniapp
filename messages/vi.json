@@ -102,5 +102,12 @@
     "privacy": "Chính sách bảo mật",
     "terms": "Điều khoản dịch vụ",
     "refund": "Chính sách hoàn tiền"
+  },
+  "prefs": {
+    "language": "Ngôn ngữ",
+    "theme": "Giao diện",
+    "themeAuto": "Tự động",
+    "themeLight": "Sáng",
+    "themeDark": "Tối"
   }
 }
